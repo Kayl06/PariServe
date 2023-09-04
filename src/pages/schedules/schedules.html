@@ -1,0 +1,80 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-buttons left>
+      <button ion-button icon-only (click)="back()">
+        <ion-icon name="arrow-round-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>{{scheduleData.title}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <div *ngIf="scheduleData">
+    <ion-list>
+      <ion-item *ngFor="let sched of responseData; let i = index">
+        <ion-avatar item-start>
+          <img src="https://www.gcccsbsit.xyz/_pabookAdmin/assets/images/Mass.jpg">
+        </ion-avatar>
+        <h2>{{sched.fld_assigned}}</h2>
+        <h2>{{date[i].dates}}</h2>
+        <h3>{{sched.fld_time}}</h3>
+      </ion-item>
+    </ion-list>
+  </div>
+  <div *ngIf="loadReq">
+    <div *ngIf="scheduleData.title == 'Marriage Requirements'">
+      <p class="req" padding-left><u>{{scheduleData.title}}</u></p>
+      <ul>
+        <li>
+          Fill up application form ( at least 1 month before scheduled wedding date)
+        </li>
+        <li>
+          Submit the following documents:
+          <ul class="list1">
+            <li> Birth Cerificate</li>
+            <li> Baptismal & Confirmation Certificate (for marriage purposes original copy)</li>
+            <li> Marriage License (1 week before the wedding date)</li>
+            <li>
+              1 pc. 2x2 picture -both
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <ul>
+        <li>Attend the Following:
+          <ul class="list2">
+            <li>Marriage Counselling <br> St. Joseph Parish - one sunday only (with Mr. & Mrs. Pedroso)</li>
+            <li>Interview with Priest (by appointment)</li>
+            <li>Confession before the wedding by appointment with priest</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <div *ngIf="scheduleData.title == 'Baptism Requirements'">
+      <p class="req" padding-left>{{scheduleData.title}}</p>
+      <p padding-left>Main Sponsors must be:</p> 
+      <ul class="list1">
+        <li>
+          A good practicing Catholic living the Christian Faith
+        </li>
+        <li>
+          A catholic who has already received the Sacraments of the Most Holy Eucharist and Confirmation
+        </li>
+        <li>
+          At least 18 yrs. of age
+        </li>
+        <li>
+          Non-Catholic's must only stand as witness
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+
+</ion-content>

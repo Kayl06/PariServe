@@ -1,0 +1,636 @@
+<ion-header no-border no-padding>
+
+  <ion-navbar>
+    <ion-title>Marriage Application</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content class="bg">
+  <ion-grid>
+    <ion-list class="my-ion-list">
+      <form #myForm="ngForm" (ngSubmit)="mApp()">
+        <ion-stepper icon="ios-female" #stepper [(selectedIndex)]="selectedIndex" [mode]="mode" (selectIndexChange)="selectChange($event)">
+          <ion-step icon="man" >
+            <ion-row>
+              <ion-col>
+                <p class="sup">Groom</p>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <ion-item id="rounded">
+                  <ion-input class="input" name="name" type="text" placeholder="Name" [(ngModel)]="applicationData.name"></ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col width-25>
+                <ion-item id="rounded">
+                  <ion-input class="input" name="age" type="number" placeholder="Age" disabled [(ngModel)]="applicationData.age"></ion-input>
+                </ion-item>
+              </ion-col>
+              <ion-col width-75>
+                <ion-item id="rounded">
+                  <ion-datetime placeholder="Date of Birth" name="dob" pickerFormat="MMM DD YYYY" displayFormat="MMM DD, YYYY"
+                    min="1950-01-01" max="2000-12-31" [(ngModel)]="applicationData.dob" (ionChange)="getAge(applicationData.dob,'age')">
+                  </ion-datetime>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col>
+                <ion-item id="rounded">
+                  <ion-input class="input" name="pob" type="text" placeholder="Place of Birth" [(ngModel)]="applicationData.pob"></ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col>
+                <ion-item id="rounded">
+                  <ion-input class="input" name="pobap" type="text" placeholder="Place of Baptism" [(ngModel)]="applicationData.pobap"></ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col>
+                <ion-item id="rounded">
+                  <ion-input class="input" name="natio" type="text" placeholder="Nationality" [(ngModel)]="applicationData.natio"></ion-input>
+                </ion-item>
+              </ion-col>
+              <ion-col>
+                <ion-item id="rounded">
+                  <ion-input class="input" name="status" type="text" placeholder="Status" [(ngModel)]="applicationData.status"></ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col>
+                <ion-item id="rounded">
+                  <ion-input class="input" name="occu" type="text" placeholder="Occupation" [(ngModel)]="applicationData.occu"></ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col>
+                <ion-item id="rounded">
+                  <ion-input class="input" name="presAdd" type="text" placeholder="Present Address" [(ngModel)]="applicationData.presAdd"></ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col width-25>
+                <ion-item id="rounded">
+                  <ion-input class="input" name="sWhen" type="text" placeholder="Since When" [(ngModel)]="applicationData.sWhen"></ion-input>
+                </ion-item>
+              </ion-col>
+              <ion-col width-75>
+                <ion-item id="rounded">
+                  <ion-input class="input" name="telNo" type="text" placeholder="Tel No." [(ngModel)]="applicationData.telNo "></ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col width-25>
+                <ion-item id="rounded">
+                  <ion-input class="input" name="faname" type="text" placeholder="Father's Name" [(ngModel)]="applicationData.faname"></ion-input>
+                </ion-item>
+              </ion-col>
+              <ion-col width-75>
+                <ion-item id="rounded">
+                  <ion-input class="input" name="fana" type="text" placeholder="Nationality" [(ngModel)]="applicationData.fana"></ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col width-25>
+                <ion-item id="rounded">
+                  <ion-input class="input" name="maname" type="text" placeholder="Mother's Name" [(ngModel)]="applicationData.maname"></ion-input>
+                </ion-item>
+              </ion-col>
+              <ion-col width-75>
+                <ion-item id="rounded">
+                  <ion-input class="input" name="mana" type="text" placeholder="Nationality" [(ngModel)]="applicationData.mana"></ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col>
+                <ion-item id="rounded">
+                  <ion-input class="input" name="parentsAdd" type="text" placeholder="Address" [(ngModel)]="applicationData.parentsAdd"></ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col>
+                <ion-item id="select">
+                  <ion-label>Choose Venue</ion-label>
+                  <ion-select name="venue" [(ngModel)]="applicationData.venue">
+                    <div *ngFor="let recep of reception">
+                      <ion-option value="{{recep}}">{{recep}}</ion-option>
+                    </div>
+                  </ion-select>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col>
+                <ion-item id="rounded">
+                  <ion-datetime placeholder="Date of Marriage" name="dom" pickerFormat="MMM DD YYYY" displayFormat="MMM DD, YYYY"
+                    min="{{this.applicationData.dom}}" max="{{this.applicationData.dom}}" [(ngModel)]="applicationData.dom">
+                  </ion-datetime>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+
+            <ion-row text-center class="sign-in">
+              <ion-col>
+                <button ion-button type="button" class="btn-signin" color="p1" ionicStepperNext>Next
+                </button>
+              </ion-col>
+            </ion-row>
+          </ion-step>
+          <ion-step icon="woman" >
+            <ion-row>
+              <ion-col>
+                <p class="sup">Bride</p>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <ion-item id="rounded">
+                  <ion-input class="input" name="name1" type="text" placeholder="Name" [(ngModel)]="applicationData.name1"></ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col width-25>
+                <ion-item id="rounded">
+                  <ion-input class="input" name="age1" type="number" placeholder="Age" disabled [(ngModel)]="applicationData.age1"></ion-input>
+                </ion-item>
+              </ion-col>
+              <ion-col width-75>
+                <ion-item id="rounded">
+                  <ion-datetime placeholder="Date of Birth" name="dob1" pickerFormat="MMM DD YYYY" displayFormat="MMM DD, YYYY"
+                    min="1950-01-01" max="2000-12-31" [(ngModel)]="applicationData.dob1" (ionChange)="getAge(applicationData.dob1,'age1')">
+                  </ion-datetime>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col>
+                <ion-item id="rounded">
+                  <ion-input class="input" name="pob1" type="text" placeholder="Place of Birth" [(ngModel)]="applicationData.pob1"></ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col>
+                <ion-item id="rounded">
+                  <ion-input class="input" name="pobap1" type="text" placeholder="Place of Baptism" [(ngModel)]="applicationData.pobap1"></ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col>
+                <ion-item id="rounded">
+                  <ion-input class="input" name="natio1" type="text" placeholder="Nationality" [(ngModel)]="applicationData.natio1"></ion-input>
+                </ion-item>
+              </ion-col>
+              <ion-col>
+                <ion-item id="rounded">
+                  <ion-input class="input" name="status1" type="text" placeholder="Status" [(ngModel)]="applicationData.status1"></ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col>
+                <ion-item id="rounded">
+                  <ion-input class="input" name="occu1" type="text" placeholder="Occupation" [(ngModel)]="applicationData.occu1"></ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col>
+                <ion-item id="rounded">
+                  <ion-input class="input" name="presAdd1" type="text" placeholder="Present Address" [(ngModel)]="applicationData.presAdd1"></ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col width-25>
+                <ion-item id="rounded">
+                  <ion-input class="input" name="sWhen1" type="text" placeholder="Since When" [(ngModel)]="applicationData.sWhen1"></ion-input>
+                </ion-item>
+              </ion-col>
+              <ion-col width-75>
+                <ion-item id="rounded">
+                  <ion-input class="input" name="telNo1" type="text" placeholder="Tel No." [(ngModel)]="applicationData.telNo1"></ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col width-25>
+                <ion-item id="rounded">
+                  <ion-input class="input" name="faname1" type="text" placeholder="Father's Name" [(ngModel)]="applicationData.faname1"></ion-input>
+                </ion-item>
+              </ion-col>
+              <ion-col width-75>
+                <ion-item id="rounded">
+                  <ion-input class="input" name="fana1" type="text" placeholder="Nationality" [(ngModel)]="applicationData.fana1"></ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col width-25>
+                <ion-item id="rounded">
+                  <ion-input class="input" name="maname1" type="text" placeholder="Mother's Name" [(ngModel)]="applicationData.maname1"></ion-input>
+                </ion-item>
+              </ion-col>
+              <ion-col width-75>
+                <ion-item id="rounded">
+                  <ion-input class="input" name="mana1" type="text" placeholder="Nationality" [(ngModel)]="applicationData.mana1"></ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col>
+                <ion-item id="rounded">
+                  <ion-input class="input" name="parentsAdd1" type="text" placeholder="Address" [(ngModel)]="applicationData.parentsAdd1"></ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col>
+                <ion-item id="rounded">
+                  <ion-datetime placeholder="Time" name="tom" pickerFormat="h:mm A" displayFormat="h:mm A" hourValues="{{hourValues}}"
+                    [(ngModel)]="applicationData.tom">
+                  </ion-datetime>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col>
+                <ion-item id="select">
+                  <ion-label>Choose Fees</ion-label>
+                  <ion-select name="fees" [(ngModel)]="applicationData.fees">
+                    <div *ngFor="let fee of cfees">
+                      <ion-option value="{{fee}}">{{fee}}</ion-option>
+                    </div>
+                  </ion-select>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+
+            <ion-row *ngIf="applicationData.fees">
+              <ion-col>
+                <ion-item id="rounded">
+                  <ion-input class="input" name="amountFees" type="text" placeholder="Enter amount" [(ngModel)]="applicationData.amountFees"></ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+
+            <ion-row text-center class="sign-in">
+              <ion-col>
+                <button ion-button type="button" class="btn-signin" color="p1" ionicStepperPrevious>
+                  <ion-icon name="arrow-back"></ion-icon>
+                </button>
+                <button ion-button type="button" class="btn-signin" color="p1" ionicStepperNext>Next</button>
+              </ion-col>
+            </ion-row>
+          </ion-step>
+          <ion-step icon="people" >
+            <ion-row>
+              <ion-col>
+                <p class="sponsors">PLEASE WRITE CLEARLY NAMES AND ADDRESS OF <label style="font-size: 30px"> SPONSORS
+                    :</label></p>
+              </ion-col>
+            </ion-row>
+
+            <ion-row text-right class="spo">
+              <ion-col>
+                <label>Male (Ninong)</label>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <ion-item id="rounded">
+                  <ion-input class="input" name="ninong1" type="text" placeholder="Name" [(ngModel)]="applicationData.ninong1"></ion-input>
+                </ion-item>
+              </ion-col>
+
+              <ion-col>
+                <ion-item id="rounded">
+                  <ion-input class="input" name="address1" type="text" placeholder="Address" [(ngModel)]="applicationData.address1"></ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col>
+                <ion-item id="rounded">
+                  <ion-input class="input" name="ninong2" type="text" placeholder="Name" [(ngModel)]="applicationData.ninong2"></ion-input>
+                </ion-item>
+              </ion-col>
+
+              <ion-col>
+                <ion-item id="rounded">
+                  <ion-input class="input" name="address2" type="text" placeholder="Address" [(ngModel)]="applicationData.address2"></ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col>
+                <ion-item id="rounded">
+                  <ion-input class="input" name="ninong3" type="text" placeholder="Name" [(ngModel)]="applicationData.ninong3"></ion-input>
+                </ion-item>
+              </ion-col>
+
+              <ion-col>
+                <ion-item id="rounded">
+                  <ion-input class="input" name="address3" type="text" placeholder="Address" [(ngModel)]="applicationData.address3"></ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col>
+                <ion-item id="rounded">
+                  <ion-input class="input" name="ninong4" type="text" placeholder="Name" [(ngModel)]="applicationData.ninong4"></ion-input>
+                </ion-item>
+              </ion-col>
+
+              <ion-col>
+                <ion-item id="rounded">
+                  <ion-input class="input" name="address4" type="text" placeholder="Address" [(ngModel)]="applicationData.address4"></ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+
+
+            <ion-row text-right class="spo">
+              <ion-col>
+                <label>Female (Ninang)</label>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <ion-item id="rounded">
+                  <ion-input class="input" name="ninang1" type="text" placeholder="Name" [(ngModel)]="applicationData.ninang1"></ion-input>
+                </ion-item>
+              </ion-col>
+
+              <ion-col>
+                <ion-item id="rounded">
+                  <ion-input class="input" name="Naddress1" type="text" placeholder="Address" [(ngModel)]="applicationData.Naddress1"></ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col>
+                <ion-item id="rounded">
+                  <ion-input class="input" name="ninang2" type="text" placeholder="Name" [(ngModel)]="applicationData.ninang2"></ion-input>
+                </ion-item>
+              </ion-col>
+
+              <ion-col>
+                <ion-item id="rounded">
+                  <ion-input class="input" name="Naddress2" type="text" placeholder="Address" [(ngModel)]="applicationData.Naddress2"></ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col>
+                <ion-item id="rounded">
+                  <ion-input class="input" name="ninang3" type="text" placeholder="Name" [(ngModel)]="applicationData.ninang3"></ion-input>
+                </ion-item>
+              </ion-col>
+
+              <ion-col>
+                <ion-item id="rounded">
+                  <ion-input class="input" name="Naddress3" type="text" placeholder="Address" [(ngModel)]="applicationData.Naddress3"></ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col>
+                <ion-item id="rounded">
+                  <ion-input class="input" name="ninang4" type="text" placeholder="Name" [(ngModel)]="applicationData.ninang4"></ion-input>
+                </ion-item>
+              </ion-col>
+
+              <ion-col>
+                <ion-item id="rounded">
+                  <ion-input class="input" name="Naddress4" type="text" placeholder="Address" [(ngModel)]="applicationData.Naddress4"></ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+
+
+            <ion-row text-center class="sign-in">
+              <ion-col>
+                <button ion-button type="button" class="btn-signin" color="p1" ionicStepperPrevious>
+                  <ion-icon name="arrow-back"></ion-icon>
+                </button>
+                <button ion-button type="button" class="btn-signin" color="p1" ionicStepperNext>Overview</button>
+              </ion-col>
+            </ion-row>
+          </ion-step>
+
+          <ion-step *ngIf="overview" icon="list" >
+            <ion-row>
+              <ion-col>
+                <p class="sponsors"><label style="font-size: 30px"> OVERVIEW</label></p>
+              </ion-col>
+            </ion-row>
+
+            <div *ngFor="let overview of overview">
+
+              <ion-row>
+                <ion-col>
+                  <ion-item-group id="divider">
+                    <ion-item-divider color="light" class="g">Groom</ion-item-divider>
+                    <ion-item><b>Name:</b> {{overview.name}}</ion-item>
+                    <ion-item><b>Age:</b> {{overview.age}}</ion-item>
+                    <ion-item><b>Date of Birth:</b> {{overview.dob}}</ion-item>
+                    <ion-item><b>Place of Birth:</b> {{overview.pob}}</ion-item>
+                    <ion-item><b>Place of Baptism:</b> {{overview.pobap}}</ion-item>
+                    <ion-item><b>Nationality:</b> {{overview.natio}}</ion-item>
+                    <ion-item><b>Status:</b> {{overview.status}}</ion-item>
+                    <ion-item><b>Occupation</b>: {{overview.occu}}</ion-item>
+                    <ion-item><b>Present Address:</b> {{overview.presAdd}}</ion-item>
+                    <ion-item><b>Telephone No. :</b> {{overview.telNo}}</ion-item>
+                    <ion-item><b>Father's Name:</b> {{overview.faname}}</ion-item>
+                    <ion-item><b>Nationality:</b> {{overview.fana}}</ion-item>
+                    <ion-item><b>Mother's Name:</b> {{overview.maname}}</ion-item>
+                    <ion-item><b>Parent's Address:</b> {{overview.parentsAdd}}</ion-item>
+                    <ion-item><b>Venue:</b> {{overview.venue}}</ion-item>
+                    <ion-item><b>Date of Marriage:</b> {{dom}}</ion-item>
+                  </ion-item-group>
+                </ion-col>
+              </ion-row>
+
+              <ion-row>
+                <ion-col>
+                  <ion-item-group id="divider">
+                    <ion-item-divider color="light" class="g">Bride</ion-item-divider>
+                    <ion-item><b>Name:</b> {{overview.name1}}</ion-item>
+                    <ion-item><b>Age:</b> {{overview.age1}}</ion-item>
+                    <ion-item><b>Date of Birth:</b> {{overview.dob1}}</ion-item>
+                    <ion-item><b>Place of Birth:</b> {{overview.pob1}}</ion-item>
+                    <ion-item><b>Place of Baptism:</b> {{overview.pobap1}}</ion-item>
+                    <ion-item><b>Nationality:</b> {{overview.natio1}}</ion-item>
+                    <ion-item><b>Status:</b> {{overview.status1}}</ion-item>
+                    <ion-item><b>Occupation</b>: {{overview.occu1}}</ion-item>
+                    <ion-item><b>Present Address:</b> {{overview.presAdd1}}</ion-item>
+                    <ion-item><b>Telephone No. :</b> {{overview.telNo1}}</ion-item>
+                    <ion-item><b>Father's Name:</b> {{overview.faname1}}</ion-item>
+                    <ion-item><b>Nationality:</b> {{overview.fana1}}</ion-item>
+                    <ion-item><b>Mother's Name:</b> {{overview.maname1}}</ion-item>
+                    <ion-item><b>Parent's Address:</b> {{overview.parentsAdd1}}</ion-item>
+                    <ion-item><b>Time of Marriage:</b> {{tom}}</ion-item>
+                    <ion-item><b>Payment:</b>{{overview.fees}} - ₱{{overview.amountFees}}</ion-item>
+                  </ion-item-group>
+                </ion-col>
+              </ion-row>
+
+              <ion-row>
+                <ion-col>
+                  <ion-item-group id="divider">
+                    <ion-item-divider color="light" class="g">Sponsors</ion-item-divider>
+                    <h3>Ninong</h3>
+                    <ion-item>
+                      <ion-row>
+                        <ion-col>
+                          {{overview.ninong1}}
+                        </ion-col>
+                        <ion-col>
+                          {{overview.address1}}
+                        </ion-col>
+                      </ion-row>
+                    </ion-item>
+
+                    <ion-item>
+                      <ion-row>
+                        <ion-col>
+                          {{overview.ninong2}}
+                        </ion-col>
+                        <ion-col>
+                          {{overview.address2}}
+                        </ion-col>
+                      </ion-row>
+                    </ion-item>
+
+                    <ion-item>
+                      <ion-row>
+                        <ion-col>
+                          {{overview.ninong3}}
+                        </ion-col>
+                        <ion-col>
+                          {{overview.address3}}
+                        </ion-col>
+                      </ion-row>
+                    </ion-item>
+
+                    <ion-item>
+                      <ion-row>
+                        <ion-col>
+                          {{overview.ninong4}}
+                        </ion-col>
+                        <ion-col>
+                          {{overview.address4}}
+                        </ion-col>
+                      </ion-row>
+                    </ion-item>
+
+                    <h3>Ninang</h3>
+                    <ion-item>
+                      <ion-row>
+                        <ion-col>
+                          {{overview.ninang1}}
+                        </ion-col>
+                        <ion-col>
+                          {{overview.Naddress1}}
+                        </ion-col>
+                      </ion-row>
+                    </ion-item>
+
+                    <ion-item>
+                      <ion-row>
+                        <ion-col>
+                          {{overview.ninang2}}
+                        </ion-col>
+                        <ion-col>
+                          {{overview.Naddress2}}
+                        </ion-col>
+                      </ion-row>
+                    </ion-item>
+
+                    <ion-item>
+                      <ion-row>
+                        <ion-col>
+                          {{overview.ninang3}}
+                        </ion-col>
+                        <ion-col>
+                          {{overview.Naddress3}}
+                        </ion-col>
+                      </ion-row>
+                    </ion-item>
+
+                    <ion-item>
+                      <ion-row>
+                        <ion-col>
+                          {{overview.ninang4}}
+                        </ion-col>
+                        <ion-col>
+                          {{overview.Naddress4}}
+                        </ion-col>
+                      </ion-row>
+                    </ion-item>
+                  </ion-item-group>
+                </ion-col>
+              </ion-row>
+            </div>
+
+            <ion-row text-center class="sign-in">
+              <ion-col>
+                <button ion-button type="button" class="btn-signin" color="p1" ionicStepperPrevious>
+                  <ion-icon name="arrow-back"></ion-icon>
+                </button>
+                <button ion-button type="submit" class="btn-signin" color="p1" [disabled]="disabled">Submit</button>
+              </ion-col>
+            </ion-row>
+          </ion-step>
+        </ion-stepper>
+      </form>
+    </ion-list>
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,219 @@
+page-login {
+  .my-ion-list {
+    max-height: 5px !important;
+    // margin-left: -1vh;
+    // margin-top: 3vh;
+    max-width: 100%;
+  }
+
+  .scroll-content {
+    padding-bottom: 0 !important;
+  }
+
+  .label-md {
+    margin: 0px !important;
+  }
+
+  .row-login {
+    text-align: center;
+    padding-left: 2vh;
+    padding-right: 2vh;
+  }
+
+  .item-md {
+    padding-left: 0;
+  }
+
+  .sup {
+    margin-top: -6vh !important;
+    font-size: 15px;
+    padding: 0;
+    margin: 0;
+    // color: map-get($colors, light);
+    color: white;
+    text-align: right;
+    font-weight: 500;
+  }
+
+  .res {
+    font-size: 16px;
+    padding: 0;
+    // color: map-get($colors, light);
+    color: rgb(46, 48, 59);
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+    font-family: 'Montserrat-Regular';
+  }
+
+  .sup1 {
+    font-size: 23px;
+    padding: 0;
+    // color: map-get($colors, light);
+    color: rgb(46, 48, 59);
+    text-align: center;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+    font-family: 'Montserrat-Regular';
+  }
+
+  .bg {
+    background-image: url('../../assets/imgs/bg.png');
+    // background-image: url('https://www.gcccsbsit.xyz/_pabookAdmin/assets/images/1.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    // position: fixed;
+    display: inline-block;
+  }
+
+  .user-img {
+    height: 50px;
+  }
+
+  #login {
+    font-family: Montserrat;
+    letter-spacing: 1px;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+  }
+
+  .list-md .item-input:last-child {
+    border-bottom: none;
+  }
+
+  .wrongPass {
+    color: #e0451e !important;
+    font-family: 'OpenSans-Regular_1';
+    font-size: 12px !important;
+  }
+
+  .dont-have-account {
+    font-size: 13px;
+    padding: 10;
+    margin-top: 0vh;
+    color: rgb(51, 50, 50);
+  }
+
+  .sign-up {
+    color: #233963;
+  }
+
+  .icon {
+    font-size: 25px;
+  }
+
+  ion-row,
+  ion-col {
+    min-height: 100% !important;
+  }
+
+  ion-input {
+    font-family: "OpenSans-Regular_1" !important;
+    font-size: 14px;
+    color: rgb(51, 50, 50);
+  }
+
+  input[type="text"]::-webkit-input-placeholder {
+    // color: rgb(255, 255, 255);
+    color: rgba(51, 50, 50, 0.63);
+    letter-spacing: 1px;
+  }
+
+  input[type="password"]::-webkit-input-placeholder {
+    // color: rgb(255, 255, 255);
+    color: rgba(51, 50, 50, 0.63);
+    letter-spacing: 1px;
+  }
+
+  #container {
+    margin-left: auto;
+    margin-right: auto;
+    max-height: 5px !important;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    width: 100%;
+    margin-top: 38vh;
+  }
+
+  .forget-pass {
+    font-family: 'OpenSans-Regular_1';
+    font-size: 12px;
+    color: #fa5119 !important;
+    margin: 0px !important;
+    text-align: end;
+  }
+
+  .search {
+    font-size: 15px !important;
+  }
+
+  .back-icon {
+    font-size: 17px !important;
+  }
+
+  h6 {
+    color: #524946 !important;
+    font-family: 'OpenSans-Regular_1';
+    font-size: 13.5px !important;
+  }
+
+  .back {
+    font-family: 'OpenSans-Regular_1';
+    font-size: 14px;
+    color: rgb(31, 32, 39);
+    margin: 0px !important;
+  }
+
+  .scroll-content {
+    padding-bottom: 0 !important;
+  }
+
+  .mcard {
+    margin-top: -30%;
+  }
+
+  .mcard1 {
+    margin-top: 0vh;
+  }
+
+  #rounded {
+    width: 95%;
+    height: 10px;
+    background-color: transparent;
+    // color: white;
+    color: rgb(51, 50, 50);
+  }
+
+  #logo {
+    text-align: center;
+  }
+
+  .btn {
+    // background-color: #233963;
+    border-radius: 5px;
+    font-family: "Akrobat-Regular" !important;
+    font-size: 15px;
+    letter-spacing: 1.5px;
+    text-transform: none;
+    padding: 0px;
+    margin-top: -3vh;
+  }
+
+  .btn-signin {
+    border-radius: 5px;
+    font-family: 'Akrobat-Regular';
+    font-size: 15px;
+    letter-spacing: 2px;
+    text-transform: none;
+    margin-left: 1px;
+    background-image: -webkit-linear-gradient(-180deg, #fe8c00 0%, #f94000 150%) !important;
+    color: white;
+  }
+
+  .sign-in {
+    padding-right: 2vh;
+  }
+}

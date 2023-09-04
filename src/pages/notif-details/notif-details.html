@@ -1,0 +1,166 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-buttons left>
+      <button ion-button icon-only (click)="back()" style="font-size: 14px !important;">
+        <ion-icon name="md-arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Notification</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <div class="fadeInUp">
+
+    <ion-card *ngIf="!show">
+      <ion-card-header>
+        <div>
+          <b>
+            <ion-icon name="ios-checkmark-circle" style="color:rgb(17, 211, 17)"
+              *ngIf="notifDetails.status == 'Accepted'"></ion-icon>
+            <ion-icon name="ios-checkmark-circle" style="color:rgb(241, 81, 7)"
+              *ngIf="notifDetails.status == 'Temporary Accepted'"></ion-icon>
+            <ion-icon name="alert" style="color:rgb(241, 28, 9)" *ngIf="notifDetails.status == 'Rejected'">
+            </ion-icon>
+            Status
+          </b>: <label>{{notifDetails.status}}</label>
+        </div>
+        <div>
+          <b>
+            <ion-icon name="clipboard" style="color:rgb(17, 133, 211)"></ion-icon>
+            Event
+          </b>: <label>{{notifDetails.evName}}</label>
+        </div>
+        <div>
+          <b>
+            <ion-icon name="ios-clock" style="color:rgb(17, 133, 211)"></ion-icon> Date/Time
+            <!-- </b>: <br> <label style="font-size: 14px;">{{notifDetails.startTime}} - {{notifDetails.endTime}}</label> -->
+          </b>: <br> <label style="font-size: 14px;">{{notifDetails.startTime}}</label>
+        </div>
+      </ion-card-header>
+      <ion-card-content>
+        <p>{{notifDetails.rej_reason}}</p>
+
+        <div *ngIf="notifDetails.status === 'Accepted' || notifDetails.status === 'Rejected'" text-center>
+          <ion-row>
+            <ion-col>
+              <button ion-button icon-right type="button" class="btn-signin" color="p1" (click)="viewReq('notview')">
+                <ion-icon name="{{details.icon}}"></ion-icon>
+                {{details.text}}
+              </button>
+            </ion-col>
+          </ion-row>
+          <div *ngIf="isHide">
+            <ion-row *ngIf="notifDetails.baptismal_img !== ''">
+              <ion-col>
+                <a>
+                  <p class="view">Your submitted requirement(s)</p>
+                </a>
+              </ion-col>
+            </ion-row>
+            <ion-row text-center class="card-background-page">
+              <ion-col *ngIf="notifDetails.evName !== 'Wedding'">
+                <div *ngIf="notifDetails.baptismal_img !== ''">
+                  <img
+                    src="https://www.gcccsbsit.xyz/_pabookApi/requirements_images_from_users/{{notifDetails.baptismal_img}}" />
+                </div>
+                <div *ngIf="notifDetails.baptismal_img === ''">
+                  <ion-icon name="alert" class="icon-warning flipInX" color="s1"></ion-icon>
+                  <p class='no-image-text'>No image found</p>
+                </div>
+              </ion-col>
+              <ion-col *ngIf=" notifDetails.evName==='Wedding'">
+                <img *ngIf=" notifDetails.wedding_img1 !==''" [src]="getImgContent(imgUrl+notifDetails.wedding_img1)" />
+              </ion-col>
+              <ion-col *ngIf="notifDetails.evName === 'Wedding'">
+                <img
+                  src="https://www.gcccsbsit.xyz/_pabookApi/requirements_images_from_users/{{notifDetails.wedding_img2}}" />
+              </ion-col>
+            </ion-row>
+          </div>
+        </div>
+
+      </ion-card-content>
+    </ion-card>
+    <ion-row text-center class="sign-in">
+      <ion-col *ngIf="notifDetails.status === 'Temporary Accepted'">
+        <button ion-button type="button" class="btn-signin" color="p1" (click)="viewReq('view')">
+          {{reqText}}
+        </button>
+      </ion-col>
+    </ion-row>
+
+
+    <ion-stepper *ngIf="show" #stepper [(selectedIndex)]="selectedIndex" [mode]="mode"
+      (selectIndexChange)="selectChange($event)" class="fade-in">
+      <ion-step label="Requirement(s)" description="Picture the given requirement(s)" errorIcon="alert" icon="document">
+        <!-- <h2></h2> -->
+        <p *ngIf="notifDetails.evName==='Baptismal'">Birth Certificate of Child</p>
+        <p *ngIf="notifDetails.evName==='Burial'">Death Certificate</p>
+        <ul *ngIf="notifDetails.evName==='Wedding'" class="wedding-req">
+          <li>Birth Certificate(Both Groom & Bride)</li>
+          <!-- <li>Baptismal & Confirmation(Original Copy)</li> -->
+        </ul>
+        <ion-buttons right>
+          <button ion-button small color="s1" ionicStepperNext class="btn-stepper">Next</button>
+        </ion-buttons>
+      </ion-step>
+      <ion-step label="Upload Image" description="You need to upload the requirement(s)" icon="cloud-upload">
+        <!-- <h2></h2> -->
+        <div class="choose-file" (click)="openGallery('others')" *ngIf="notifDetails.evName !=='Wedding'">
+          <a>
+            <ion-icon name="cloud-upload" class="cfile"></ion-icon>
+            <p class="cfile">{{choose}}</p>
+          </a>
+        </div>
+        <div class="choose-file" (click)="openGallery('Wedding')" *ngIf="notifDetails.evName==='Wedding'">
+          <a *ngIf="showChooseFile">
+            <ion-icon name="cloud-upload" class="cfile"></ion-icon>
+            <p class="cfile">{{choose}}</p>
+          </a>
+        </div>
+        <div class="img" *ngIf="notifDetails.evName !=='Wedding'">
+          <img class="fadeInLeft" src="{{base64Image}}">
+        </div>
+        <ion-grid *ngIf="notifDetails.evName==='Wedding'">
+          <ion-row>
+            <ion-col *ngFor="let weddingImages of weddingImages; let i=index">
+              <img class="fadeInLeft" src="{{weddingImages}}" (click)="openGallery(i)">
+            </ion-col>
+            <ion-col *ngIf="showAddButton">
+              <div class="add-icon">
+                <button ion-button icon-only color="p1" outline (click)="openGallery('Wedding')">
+                  <ion-icon name="add-circle"></ion-icon>
+                </button>
+              </div>
+            </ion-col>
+          </ion-row>
+          <!-- <ion-row>
+            <ion-col *ngIf="weddingImages[0]">
+              <img class="fadeInLeft" src="{{weddingImages[0]}}">
+            </ion-col>
+            <ion-col>
+              <div class="add-icon" *ngIf="showAddButton">
+                <button ion-button icon-only color="p1" outline (click)="openGallery('Wedding')">
+                  <ion-icon name="add-circle"></ion-icon>
+                </button>
+              </div>
+              <div *ngIf="weddingImages[1]">
+                <img class="fadeInLeft" src="{{weddingImages[1]}}">
+              </div>
+            </ion-col>
+          </ion-row> -->
+
+        </ion-grid>
+        <ion-buttons right>
+          <button ion-button color="light" small ionicStepperPrevious class="btn-stepper">Back</button>
+          <button ion-button color="s1" small (click)="submitFile(notifDetails.evName)"
+            class="btn-stepper">Submit</button>
+        </ion-buttons>
+      </ion-step>
+    </ion-stepper>
+  </div>
+</ion-content>

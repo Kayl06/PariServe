@@ -1,0 +1,95 @@
+page-notif-details {
+  font-family: 'OpenSans-Regular_1' !important;
+
+  ion-content {
+    background-color: rgb(251, 248, 248) !important;
+  }
+
+  ion-card {
+    border-radius: 5px !important;
+    margin-top: 2vh !important;
+
+  }
+
+  label {
+    font-size: 15px;
+  }
+
+  .icon-warning{
+    font-size:90px;
+  }
+
+  .no-image-text{
+    font-weight: bold !important;
+  }
+
+  .view{
+    color: rgb(251, 65, 8);
+    font-size: 13px !important;
+  }
+
+  img{
+    width: auto;
+    margin: auto;
+  }
+
+  b {
+    font-size: 16px;
+  }
+
+  p {
+    font-family: 'OpenSans-Regular_1' !important;
+    font-size: 16.5px !important;
+  }
+
+  .wedding-req {
+    font-size: 14px;
+    padding-left: 5%;
+    padding-right: 0%;
+  }
+
+  .btn-signin {
+    border-radius: 30px;
+    letter-spacing: 1px;
+    font-size: 12.5px;
+  }
+
+  .btn-stepper {
+    border-radius: 5px;
+    letter-spacing: 1.4px;
+    font-size: 13px;
+  }
+
+  .cfile {
+    font-size: 50px;
+    padding: 0px;
+    margin-top: -5px;
+    color: #0c364c;
+    text-decoration: underline;
+  }
+
+
+  .choose-file {
+    margin-left: -50px;
+    text-align: center;
+  }
+
+  .img {
+    margin-left: -50px;
+    text-align: center;
+
+  }
+
+  img {
+    height: 200px;
+  }
+
+  .add-icon {
+    line-height: 150px;
+    text-align: center;
+  }
+
+  icon-only {
+    border-radius: 50%;
+  }
+}

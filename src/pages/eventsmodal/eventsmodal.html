@@ -1,0 +1,130 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-buttons left>
+      <button ion-button icon-only (click)="back()">
+        <ion-icon name="arrow-round-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons right *ngIf="recievedEvent.eType">
+      <button ion-button icon-only (click)="pabookPage()">
+        <ion-icon name="md-calendar"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title *ngIf="recievedEvent.eType">{{recievedEvent.eType}}</ion-title>
+
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+  <div>
+    <ion-card>
+      <img src="{{recievedEvent.img}}" />
+      <ion-card-content *ngIf="Wfees">
+
+        <ion-card-title>
+          Reservation Fee of ₱1,000.00
+        </ion-card-title>
+        <p>
+          -Will be deducted upon payment of wedding fee
+          <br>-Non-refundable upon cancelation of wedding application
+        </p>
+        <div text-right (click)="anotherPage(3,'Marriage Requirements')">
+          <button ion-button class="marriage" color="p1">View Requirements</button>
+        </div>
+      </ion-card-content>
+      <ion-card-content *ngIf="bFees">
+
+        <ion-card-title text-center>
+          <h1>Morning Only</h1>
+        </ion-card-title>
+        <div text-center (click)="anotherPage(4,'Baptism Requirements')">
+          <button ion-button class="marriage" color="p1">View Requirements</button>
+        </div>
+      </ion-card-content>
+
+      <ion-card-content *ngIf="burial">
+        <ion-card-title text-center>
+          <h1>Requirements</h1>
+        </ion-card-title>
+      </ion-card-content>
+    </ion-card>
+    <div *ngIf="bFees">
+      <ion-item-group *ngFor="let bfee of bFees" no-lines>
+        <ion-item-divider text-center> Saturday and Sunday
+          <br>
+          Registration Starts at 9 AM
+        </ion-item-divider>
+        <ion-item>
+          Parents (Candle)
+          <p item-end style="font-size: 14px;">₱ {{bfee.parentsFee}}.00 </p>
+        </ion-item>
+        <ion-item>
+          Sponsor Fee (with candle)
+          <p item-end style="font-size: 14px;">₱ {{bfee.sponsorFee}}.00 <em></em></p>
+        </ion-item>
+        <ion-item-group *ngFor="let wday of wdays">
+          <ion-item-divider text-center>Weekdays & By Schedule</ion-item-divider>
+          <ion-item>
+            Parents (for registration fee)
+            <p item-end style="font-size: 14px;">₱ {{wday.pReservation}}.00 <em></em></p>
+          </ion-item>
+          <ion-item>
+            <p item-end style="font-size: 14px;">(candle) ₱ {{wday.parents}}.00 <em></em></p><br>
+          </ion-item>
+          <ion-item>
+            <p item-end style="font-size: 14px;">(remembrance cert.) ₱ {{wday.rCert}}.00 <em></em></p><br>
+          </ion-item>
+          <ion-item>
+            Sponsors (with candle)
+            <p item-end style="font-size: 14px;">₱ {{wday.sponsor}}.00 <em></em></p><br>
+          </ion-item>
+        </ion-item-group>
+      </ion-item-group>
+    </div>
+    <div *ngIf="Wfees">
+      <ion-item-group *ngFor="let fees of Wfees" no-lines>
+        <ion-item-divider text-center>{{fees.tHeader}}</ion-item-divider>
+        <ion-item>{{fees.title}}
+          <p item-end>{{fees.mrgFees}}.00</p>
+        </ion-item>
+        <ion-item>
+          {{fees.sTtitle}}
+          <p item-end>{{fees.mrgWidMass}}.00</p>
+        </ion-item>
+        <ion-item *ngIf="fees.rCarpet != 0">
+          {{fees.sTtitle2}}
+          <p item-end>{{fees.rCarpet}}.00</p>
+        </ion-item>
+        <ion-item>
+          {{fees.sTtitle3}}
+          <p item-end>{{fees.eUsage}}.00</p>
+        </ion-item>
+        <ion-item>
+          {{fees.sTtitle4}}
+          <p item-end>{{fees.seatCover}}.00</p>
+        </ion-item>
+        <hr>
+        <ion-item>
+          {{fees.sTtitle5}}
+          <p item-end><b>₱ {{fees.total}}.00</b></p>
+        </ion-item>
+      </ion-item-group>
+    </div>
+
+    <ion-item-group *ngIf="burial">
+      <div *ngFor="let burial of burial">
+        <ion-item>
+          Important: {{burial.dC}}
+        </ion-item>
+        <ion-item>
+          {{burial.req}}
+          <p item-end>₱ {{burial.massFee}}.00</p>
+        </ion-item>
+      </div>
+
+    </ion-item-group>
+
+  </div>
+</ion-content>

@@ -1,0 +1,73 @@
+page-mass-schedules {
+    font-family: 'Roboto-Regular';
+
+    .item-md{
+        padding-left: 8px !important;
+    }
+    .card-background-page{
+    ion-card {
+        position: relative;
+        text-align: center;
+        height: 180px;
+        border-radius: 7px;
+    }
+
+    .back{
+        color:#141414 !important;
+    }
+
+    .card-title {
+        position: absolute;
+        border-radius: 0px 0px 10px 10px;
+        padding-bottom: 3px;
+        top: .5%;
+        left: 53%;
+        width: 50%;
+        font-weight: bold;
+        font-size: 12px;
+        color: #fff;
+        background-color: rgb(0, 185, 0);
+    }
+
+    }
+
+    .titles{
+        padding: 0;
+        margin: 0px;
+        font-size: 20px;
+        font-family: 'Akrobat-Regular';
+        font-weight: bold;
+    }
+
+    .contents{
+        margin-top: 3vh;
+        font-family: 'Akrobat-Regular';
+        font-size: 17px;
+        text-transform: capitalize;
+        line-height: 150%
+    }
+    label  {
+        font-size: 12px;
+        font-weight: bold;
+        color: color($colors,p1)
+    }
+    .c-image{
+        filter: brightness(89%);
+        height: 200px;
+        width: 100%;
+      }
+
+      .icons{
+        font-size: 32px;
+        color: color($colors,primarys);
+    } 
+
+    .num {
+        text-decoration: none;
+        font-size: 12px;
+        font-weight: bold;
+        color: color($colors,p1)
+
+    }
+
+}

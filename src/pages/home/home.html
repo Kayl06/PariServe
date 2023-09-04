@@ -1,0 +1,74 @@
+<ion-header>
+
+  <ion-navbar no-border>
+    <ion-title text-center>
+      <img id="logo" src="../../assets/icon/app_iconwhite.png" height="40" />
+    </ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="bg">
+  <!-- <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles"
+      refreshingText="Refreshing..."></ion-refresher-content>
+  </ion-refresher> -->
+  <div *ngIf="isUserLoggedIn">
+    <!-- <p class="p">
+      Weekly Schedule of Masses
+    </p>
+    <ion-list>
+      <ion-item>
+        26 November(Monday)
+        <ion-badge item-end>View</ion-badge>
+      </ion-item>
+    </ion-list> -->
+
+    <p class="p"></p>
+    <!-- <div class="card-background-page">
+      <ion-slides slidesPerView="auto">
+        <ion-slide *ngFor="let slides of slider">
+          <ion-card>
+            <img class="c-image" src="{{slides.img}}" />
+            <div class="card-content">
+              <div class="card-title">{{slides.title}}</div>
+              <div class="card-subtitle">Olongapo, Zambales</div>
+            </div>
+          </ion-card>
+        </ion-slide>
+      </ion-slides>
+    </div> -->
+    <div class="card-background-page1">
+      <ion-card (click)="weekly()">
+        <!-- <img class="c-image" src="https://www.gcccsbsit.xyz/_pabookAdmin/assets/images/Mass.jpg" /> -->
+        <img class="c-image" src="https://www.gcccsbsit.xyz/_pabookAdmin/assets/images/col2.jpg" />
+        <div class="card-titles">About Our Church</div>
+        <div class="card-subtitles"><ion-icon name="md-arrow-forward"></ion-icon></div>
+      </ion-card>
+    </div>
+
+    <p class="p">
+      Type of Available Events
+    </p>
+
+    <ion-slides spaceBetween="35" slidesPerView="auto">
+      <ion-slide class="slide-header" *ngFor="let s of events">
+        <div class="slide-content" (click)="imageClicked(s.id,s.type, s.img)">
+          <img class="bHistory" src="{{s.img}}" alt="">
+        </div>
+        <p class="type">{{s.type}}</p>
+      </ion-slide>
+    </ion-slides>
+
+    <div class="card-background-page1" *ngFor="let items of items">
+      <ion-card (click)="anotherPage(items.id, items.title)">
+        <img class="c-image" src="https://www.gcccsbsit.xyz/_pabookAdmin/assets/images/Mass.jpg" />
+        <div class="card-titles">Mass Schedules</div>
+        <div class="card-subtitles">St. Columban Church</div>
+      </ion-card>
+    </div>
+
+
+  </div>
+</ion-content>

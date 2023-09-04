@@ -1,0 +1,185 @@
+// Ionic Variables and Theming. For more info, please see:
+// http://ionicframework.com/docs/theming/
+
+// Font path is used to include ionicons,
+// roboto, and noto sans fonts
+$font-path: "../assets/fonts";
+
+// The app direction is used to include
+// rtl styles in your app. For more info, please see:
+// http://ionicframework.com/docs/theming/rtl-support/
+$app-direction: ltr;
+
+
+@import "ionic.globals";
+
+
+// Shared Variables
+// --------------------------------------------------
+// To customize the look and feel of this app, you can override
+// the Sass variables found in Ionic's source scss files.
+// To view all the possible Ionic variables, see:
+// http://ionicframework.com/docs/theming/overriding-ionic-variables/
+
+
+
+
+// Named Color Variables
+// --------------------------------------------------
+// Named colors makes it easy to reuse colors on various components.
+// It's highly recommended to change the default colors
+// to match your app's branding. Ionic uses a Sass map of
+// colors so you can add, rename and remove colors as needed.
+// The "primary" color is the only required color in the map.
+
+$colors: (p1: #0c364c,
+s1: #da6928,
+primarys: #488aff,
+primary: #4891a3,
+secondary: #030303,
+danger: #f53d3d,
+light: #f4f4f4,
+dark_blue: #192a35,
+lights: #c2bdbd,
+dark: rgb(75, 73, 73));
+
+$pabookCS: (primary: #0c364c,
+pLight: #3d6078,
+pDark: #001024,
+
+
+secondary: #ec6c22,
+danger: #f1244d,
+success: #64dd17,
+light: #f4f4f4,
+lights: #6d6969,
+dark: #000a12);
+
+// $app-background: linear-gradient(to bottom, color($colors, light) 100%, color($colors, dark) 100%);
+// $background-color: transparent;
+// $toolbar-background: transparent;
+
+
+// App iOS Variables
+// --------------------------------------------------
+// iOS only Sass variables can go here
+$toolbar-ios-height: 68px;
+$toolbar-ios-title-font-size: 20px;
+$toolbar-ios-padding: 0;
+$loading-ios-max-height: 80px;
+$loading-ios-max-width: 500px;
+$loading-ios-border-radius: 11px;
+$loading-ios-background: none;
+$loading-ios-box-shadow-color: transparent;
+$loading-ios-text-color: white;
+$loading-ios-spinner-color: white;
+$loading-ios-content-margin-start: -1px;
+$tabs-ios-tab-color-active: color($colors, p1);
+$toast-ios-title-padding-top: 10px;
+$toast-ios-title-padding-bottom: 10px;
+
+// App Material Design Variables
+// --------------------------------------------------
+// Material Design only Sass variables can go here
+
+// $toolbar-md-title-text-color:rgb(255, 255, 255);
+$toolbar-md-title-text-color:#4bc0dd;
+$toast-md-title-padding-end: 0px;
+$toast-md-title-font-size: 15px;
+$tabs-md-tab-color-active: color($colors, s1);
+$toast-md-title-padding-top: 10px;
+$toast-md-title-padding-bottom: 10px;
+$toast-md-title-padding-end: 0px;
+// $toolbar-md-background: linear-gradient(to right, #c5ccd8, #b1cde5, #92d0ef, #66d4f1, #12d8eb);
+$toolbar-md-background: rgb(255, 255, 255);
+$toolbar-md-height: 50px;
+$toolbar-md-title-font-size: 17px;
+$toolbar-md-padding: 0;
+$loading-md-max-height: 80px;
+$loading-md-max-width: 500px;
+$loading-md-border-radius: 11px;
+$loading-md-background: none;
+$loading-md-box-shadow-color: transparent;
+$loading-md-text-color: white;
+$loading-md-spinner-color: white;
+$loading-md-content-margin-start: -1px;
+$loading-md-spinner-color: color($pabookCS, light);
+$tabs-md-tab-font-size: 12px;
+
+// App Windows Variables
+// --------------------------------------------------
+// Windows only Sass variables can go here
+
+
+
+
+// App Theme
+// --------------------------------------------------
+// Ionic apps can have different themes applied, which can
+// then be future customized. This import comes last
+// so that the above variables are used and Ionic's
+// default are overridden.
+
+@import "ionic.theme.default";
+
+
+// Ionicons
+// --------------------------------------------------
+// The premium icon font for Ionic. For more info, please see:
+// http://ionicframework.com/docs/ionicons/
+
+@import "ionic.ionicons";
+
+
+// Fonts
+// --------------------------------------------------
+$font-family-md-base: "Roboto-Regular, Akrobat-Regular, OpenSans-Regular_1,Montserrat-Regular,Montserrat-Medium";
+$font-family-ios-base: "Roboto-Regular";
+$font-family-wp-base: "Roboto-Regular";
+
+// @import "roboto";
+// @import "noto-sans";
+
+@font-face {
+  font-family: "Roboto-Regular";
+  font-style: normal;
+  src: url("../assets/fonts/Roboto-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Montserrat-Medium";
+  font-style: normal;
+  src: url("../assets/fonts/Montserrat-Medium.otf");
+}
+
+@font-face {
+  font-family: "Montserrat-Regular";
+  font-style: normal;
+  src: url("../assets/fonts/Montserrat-Regular.otf");
+}
+
+@font-face {
+  font-family: "Akrobat-Regular";
+  font-style: normal;
+  src: url("../assets/fonts/Akrobat-Regular.otf");
+}
+
+@font-face {
+  font-family: "OpenSans-Regular_1";
+  font-style: normal;
+  src: url("../assets/fonts/OpenSans-Regular_1.ttf");
+}
+
+body {
+  font-family: "Roboto-Regular" !important;
+}
+
+h1,
+h2,
+button,
+p {
+  font-family: "Roboto-Regular";
+}
+
+$alert-md-title-font-size: 20px;
+$alert-md-sub-title-font-size: 18px;

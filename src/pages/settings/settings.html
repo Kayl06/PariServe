@@ -1,0 +1,267 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title *ngIf="hide">My Account</ion-title>
+    <ion-title *ngIf="!hide">{{ionTitle}}</ion-title>
+    <ion-buttons left>
+      <button ion-button icon-only (click)="back()" style="font-size: 14px !important;" *ngIf="!hide">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons right>
+      <button ion-button icon-only (click)="done('editprofile')" style="font-size: 14px !important;"
+        *ngIf="!hide && !changePassword">
+        <ion-icon name="checkmark" class="pulse"></ion-icon>
+      </button>
+      <div *ngIf="!hide">
+        <button ion-button icon-only (click)="done('changepassword')" style="font-size: 14px !important;"
+          *ngIf="changePassword">
+          <ion-icon name="checkmark" class="pulse"></ion-icon>
+        </button>
+      </div>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <div *ngIf="isUserLoggedIn">
+    <div class="bg">
+      <ion-grid>
+        <ion-row>
+          <ion-col class="col-img" col-3>
+            <ion-avatar>
+              <img [src]="userInfo.img" alt="">
+            </ion-avatar>
+          </ion-col>
+          <ion-col col-7 class="info">
+            <p text-center class="person_name">{{userInfo.name}}</p>
+            <p text-center class="person_contact">{{userInfo.email}}</p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+
+    <hr>
+
+
+
+    <ion-list text-center no-lines no-padding>
+      <ion-item>
+
+        <ion-label color="primary" text-center>
+          <a (click)="logout()">Log out
+          </a>
+        </ion-label>
+      </ion-item>
+      <hr>
+      <p class="p">
+        Your Reservation History
+      </p>
+      <div *ngIf="hs">
+
+        <ion-item *ngFor="let his of history">
+          <ion-label class="ites">
+            {{his.evName}} - {{his.reserve_at}}
+            <ion-badge item-end style="background-color:#05ce0f;" *ngIf="his.status == 'Accepted'">{{his.status}}
+            </ion-badge>
+            <ion-badge item-end style="background-color:#ce2d05;" *ngIf="his.status == 'Rejected'">{{his.status}}
+            </ion-badge>
+            <ion-badge item-end style="background-color:#ffc800; color: rgb(0, 0, 0)" *ngIf="his.status == 'Pending'">
+              {{his.status}}</ion-badge>
+            <ion-badge item-end style="background-color:#ce4505;" *ngIf='his.status == "Temporary Accepted"'>
+              {{his.status}}</ion-badge>
+
+          </ion-label>
+        </ion-item>
+      </div>
+      <ion-item *ngIf="!hs">
+        <ion-label class="ites">
+          No History
+        </ion-label>
+
+      </ion-item>
+    </ion-list>
+  </div>
+  <div *ngIf="isRegistration" class="settings-content">
+    <!-- <div class="bg" align="center">
+      <ion-avatar>
+        <img src="../../assets/imgs/UP - 4.jpg">
+      </ion-avatar>
+    </div>
+    <p text-center class="person_name">{{userInfo.userData.fname}} {{userInfo.userData.lname}}</p>
+    <p text-center class="person_contact">{{userInfo.userData.email}}</p> -->
+    <div *ngIf="hide">
+      <div class="bg">
+        <ion-grid>
+          <ion-row>
+            <ion-col class="col-img" col-3>
+              <ion-avatar class="flipInX">
+                <img src="{{image_data}}" alt="display picture">
+              </ion-avatar>
+            </ion-col>
+            <ion-col col-7 class="info">
+              <p class="person_name">{{userInfo.userData.fname}} {{userInfo.userData.lname}}</p>
+              <p class="person_contact">{{userInfo.userData.email}}</p>
+              <button ion-button outline class="edits" color="lights" (click)="editprofile('editprofile')">Edit
+                Profile</button>
+              <button ion-button outline class="edits" color="lights" (click)="editprofile('accountsettings')">
+                <ion-icon name="ios-settings"></ion-icon><br>
+              </button>
+            </ion-col>
+            <ion-col col-2 class="info1">
+              <ion-buttons>
+                <button ion-button clear>
+                  <!-- <ion-icon color="dark" name="create" (click)="editprofile()"></ion-icon> -->
+                  <ion-icon name="power" color="dark_blue" (click)="logout()"></ion-icon><br>
+                  <!-- <a (click)="logout()">
+                    Log-out
+                  </a> -->
+                </button>
+              </ion-buttons>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+
+      <hr>
+
+
+
+      <ion-list text-center no-padding>
+        <p class="p">
+          Your Reservation History
+        </p>
+        <div *ngIf="hs">
+
+          <ion-item *ngFor="let his of history" (click)="ActionSheet(his.evName, his.reserve_at, his.status, his.id)"
+            tappable>
+            <ion-label class="ites">
+              {{his.evName}} - {{his.reserve_at}}
+            </ion-label>
+            <ion-badge item-end style="background-color:#05ce0f;" *ngIf="his.status == 'Accepted'">{{his.status}}
+            </ion-badge>
+            <ion-badge item-end style="background-color:#ce2d05;" *ngIf="his.status == 'Rejected'">{{his.status}}
+            </ion-badge>
+            <ion-badge item-end style="background-color:#ce2d05;" *ngIf="his.status == 'Cancelled'">{{his.status}}
+            </ion-badge>
+            <ion-badge item-end style="background-color:#ffc800; color: rgb(0, 0, 0)" *ngIf="his.status == 'Pending'">
+              {{his.status}}
+            </ion-badge>
+            <ion-badge item-end style="background-color:#f86521;" *ngIf="his.status == 'Temporary Accepted'">Tempor...
+            </ion-badge>
+          </ion-item>
+        </div>
+
+        <ion-item *ngIf="!hs">
+          <ion-label class="ites">
+            No History
+          </ion-label>
+        </ion-item>
+        <!-- <div text-center *ngIf="truncating && history.length > 4">
+        <a (click)="truncating = true">
+          Show more
+        </a>
+      </div> -->
+      </ion-list>
+    </div>
+
+    <div *ngIf="!hide" class="fadeInUp">
+      <div *ngIf="!changePassword">
+        <ion-grid style="margin-top: 5vh;" no-padding>
+          <div class="bg" align="center">
+            <ion-row>
+              <ion-col class="col-img1" class="avatar-background">
+                <ion-avatar class="avatar flipInX">
+                  <img src="{{image_data}}" alt="display picture">
+                </ion-avatar>
+                <div class="avatar-text" (click)="openGallery()">
+                  <ion-icon name="ios-camera-outline" class="avatar-icon"></ion-icon>
+                </div>
+              </ion-col>
+            </ion-row>
+          </div>
+
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-label floating>First Name</ion-label>
+                <ion-input type="text" value="{{userInfo.userData.fname}}" [(ngModel)]="userInfo.userData.fname">
+                </ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col>
+              <ion-item>
+                <ion-label floating>Last Name</ion-label>
+                <ion-input type="text" value="{{userInfo.userData.lname}}" [(ngModel)]="userInfo.userData.lname">
+                </ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-label floating>Email Address</ion-label>
+                <ion-input type="text" value="{{userInfo.userData.email}}" [(ngModel)]="userInfo.userData.email">
+                </ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-label floating>Mobile Number</ion-label>
+                <ion-input type="number" value="{{userInfo.userData.mobile}}" [(ngModel)]="userInfo.userData.mobile">
+                </ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+      <div *ngIf="changePassword">
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-label stacked>Current Password</ion-label>
+              <ion-input type="password" [(ngModel)]="changePasswordInfo.old_pass"
+                placeholder="Enter your current password"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-label stacked>New Password</ion-label>
+              <ion-input type="password" (ionChange)="password()" [(ngModel)]="changePasswordInfo.new_pass"
+                placeholder="At least 6 characters">
+              </ion-input>
+              <p class="wrongPass" *ngIf="passwordlength">A password must be six characters</p>
+            </ion-item>
+            <p class="wrongPass" id="{{err}}" *ngIf="passwordlength">A password must be six characters</p>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-label stacked>Verify Password</ion-label>
+              <ion-input type="password" (ionChange)="password()" [(ngModel)]="changePasswordInfo.veripass"
+                placeholder="At least 6 characters">
+              </ion-input>
+            </ion-item>
+            <p class="wrongPass" id="{{err}}" *ngIf="passwordlength">A password must be six characters</p>
+          </ion-col>
+        </ion-row>
+      </div>
+
+    </div>
+  </div>
+  <div *ngIf="isNew" class="newHere" text-center>
+    <img src="../../assets/icon/login.svg" alt="" class="img-notif">
+    New Here?
+    <a (click)="register('RegisterPage')"> Register Now!</a>
+    <br>
+    Or
+    <br><a (click)="backtoLoginPage()">Login</a>
+  </div>
+</ion-content>

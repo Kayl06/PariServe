@@ -1,0 +1,96 @@
+page-church {
+  .monthview-eventdetail-timecolumn {
+    display: none;
+  }
+
+  .event-detail {
+    font-family: 'Akrobat-Regular';
+    font-size: 16.5px;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+
+  small {
+    font-size: 80%;
+    color: #1abdd6;
+    font-family: 'Akrobat-Regular';
+
+  }
+
+  .swiper-container {
+    font-family: 'Akrobat-Regular';
+  }
+
+  .toolbar-title-md {
+    padding: 0px;
+    ;
+    word-wrap: break-word;
+
+  }
+
+  .monthview-selected[_ngcontent-c1] {
+    background: #0aafd6;
+    border-radius: 90% !important;
+    // background: #06beb6;  /* fallback for old browsers */
+    // background: -webkit-linear-gradient(to right, #48b1bf, #06beb6);  /* Chrome 10-25, Safari 5.1-6 */
+    // background: linear-gradient(to right, #48b1bf, #06beb6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  }
+
+  .monthview-current[_ngcontent-c1] {
+    background: #4bc0dd;
+    border-radius: 90% !important;
+    /* fallback for old browsers */
+    // background: -webkit-linear-gradient(to right, #48b1bf, #06beb6);
+    // /* Chrome 10-25, Safari 5.1-6 */
+    // background: linear-gradient(to right, #48b1bf, #06beb6);
+    // /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color: rgb(255, 255, 255);
+  }
+
+  .monthview-primary-with-event[_ngcontent-c1] {
+    // background-color: rgb(9, 84, 131);
+    background: #1b697c;
+    border-radius: 90% !important;
+
+  }
+
+  .no-events-label[_ngcontent-c0] {
+    font-weight: bold;
+    color: darkgrey;
+    text-align: center;
+    margin-top: 12vh;
+  }
+
+  .table {
+    border: none !important;
+    border-bottom-width: 0px !important;
+    font-size: 16px;
+  }
+
+  .event-detail-container {
+    border-top: none !important;
+  }
+
+  td {
+    border: none !important;
+  }
+
+  th {
+    border-bottom-width: 0px !important;
+    border: none !important;
+    border-bottom: none !important;
+  }
+
+  .title {
+    color: #48b1bf;
+    font-size: 50px;
+    padding: 0px;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    margin: 8px;
+    font-family: 'Akrobat-Regular';
+  }
+
+
+
+}

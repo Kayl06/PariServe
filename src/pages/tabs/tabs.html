@@ -1,0 +1,7 @@
+<ion-tabs name="Pabook Tabs" selectedIndex="{{selectedIndex}}" tabsPlacement="bottom">
+  <ion-tab [root]="homeRoot" tabTitle="Home" tabIcon="ios-home" class="ion-tab"></ion-tab>
+  <ion-tab [root]="churchRoot" tabTitle="Calendar" tabIcon="ios-calendar" class="ion-tab"></ion-tab>
+  <ion-tab [root]="notifRoot" tabTitle="Notification" tabIcon="ios-notifications"
+    tabBadge="{{ numItems > 0 ? numItems : '' }}" tabBadgeStyle="danger" class="ion-tab"></ion-tab>
+  <ion-tab [root]="settingsRoot" tabTitle="Account" tabIcon="ios-contact" class="ion-tab"></ion-tab>
+</ion-tabs>

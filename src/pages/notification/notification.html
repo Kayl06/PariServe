@@ -1,0 +1,79 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Notifications</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding-top>
+  <!-- <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles"
+      refreshingText="Refreshing..."></ion-refresher-content>
+  </ion-refresher> -->
+  <!-- <ion-list no-lines class="list">
+    <button ion-item *ngFor="let item of items" (click)="itemSelected(item)">
+      {{ item.approved }}
+      {{ item.rejected }}
+    </button>
+  </ion-list> -->
+  <ion-list class="list" no-lines *ngFor="let item of items">
+    <div *ngIf="notif">
+      <ion-item *ngIf="item.status != 'Pending'" (click)="itemSelected(item)">
+        <ion-avatar item-start>
+          <img src="../../assets/icon/app_iconwhite.png">
+        </ion-avatar>
+
+        <p>
+          <b style="font-size: 15px; color:#414b4d;" *ngIf="item.status == 'Rejected'">{{item.status}}</b>
+          <b style="font-size: 15px; color:#414b4d;" *ngIf="item.status == 'Temporary Accepted'">{{item.status}}</b>
+          <b style="font-size: 15px; color:#414b4d;" *ngIf="item.status == 'Accepted'">{{item.status}}</b>
+          <b style="font-size: 15px; color:#414b4d;" *ngIf="item.status == 'Cancelled'">{{item.status}}</b>
+          <b style="font-size: 15px; color:#414b4d;" *ngIf="item.status == 'Re-Sched'">{{item.status}}</b>
+          {{item.rej_reason}}
+        </p>
+        <!-- <p item-end style="font-size: 12px;">{{item.reserve_at}}</p> -->
+        <!-- <button ion-button icon-only item-end>
+          <ion-icon name=""></ion-icon>
+        </button> -->
+      </ion-item>
+    </div>
+  </ion-list>
+
+  <!-- <ion-list class="list" no-lines>
+    <ion-item>
+      <ion-label text-center>
+
+      </ion-label>
+    </ion-item>
+  </ion-list> -->
+
+  <ion-grid text-center>
+    <div *ngIf="checkConnection">
+      <div *ngIf="!notif">
+        <ion-row>
+          <img src="../assets/icon/notification.svg" alt="" class="img-notif">
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <label class="ites"> No Notification.</label>
+          </ion-col>
+        </ion-row>
+      </div>
+    </div>
+    <div *ngIf="!checkConnection">
+      <div>
+        <ion-row>
+          <img src="../assets/icon/no-wifi.svg" alt="" class="img-notif">
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <label class="ites"> Check your internet Connection.</label>
+          </ion-col>
+        </ion-row>
+      </div>
+    </div>
+  </ion-grid>
+
+</ion-content>

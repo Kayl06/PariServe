@@ -1,0 +1,40 @@
+page-eventsmodal {
+  font-family: 'Akrobat-Regular' !important;
+
+  em {
+    font-size: 12px;
+    font-style: normal;
+  }
+
+  ion-card-title {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  h1 {
+    font-family: 'Akrobat-Regular' !important;
+    font-size: 30px !important;
+  }
+
+  .item-md.item-block .item-inner {
+    padding-right: 8px;
+    border-bottom: none;
+  }
+
+  .item-divider-md {
+    padding-left: 16px;
+    font-size: 1.8rem;
+    line-height: 25px;
+    font-family: 'Akrobat-Regular';
+
+    margin: 0%;
+    color: #131212;
+    background-color: #fff;
+  }
+
+  .marriage {
+    font-family: 'OpenSans-Regular_1' !important;
+    border-radius: 25px;
+    font-size: 12.5px;
+  }
+}

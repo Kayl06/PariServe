@@ -1,0 +1,196 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-buttons left>
+      <button ion-button icon-only (click)="back()" style="font-size: 14px !important;">
+        <!-- <ion-icon color="light" name="md-arrow-back"></ion-icon> -->
+        <ion-icon name="arrow-round-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title *ngIf="isUserChange">
+      Re-Schedule
+    </ion-title>
+    <ion-title *ngIf="!isUserChange">
+      Your Event Details
+    </ion-title>
+
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding-top>
+
+  <ion-grid class="fade-in">
+    <ion-list no-lines>
+      <div *ngIf="isUserChange">
+        <ion-row *ngIf="date1">
+          <ion-item>
+            <ion-label class="label">Date</ion-label>
+            <ion-datetime name="changeDate" pickerFormat="MMM DD YYYY" displayFormat="MMM DD, YYYY" min="{{date1}}"
+              [(ngModel)]="date1">
+            </ion-datetime>
+          </ion-item>
+        </ion-row>
+        <ion-row *ngIf="time">
+          <ion-item>
+            <ion-label class="label">Time</ion-label>
+            <ion-datetime name="changeTime" pickerFormat="hh:mm A" displayFormat="hh:mm" min="{{date}}" max="{{date}}"
+              [(ngModel)]="time">
+            </ion-datetime>
+          </ion-item>
+        </ion-row>
+        <ion-row>
+          <ion-item>
+            <textarea margin-top rows="4" cols="40" class="text-area" placeholder="Leave your reason here" name="reason"
+              [(ngModel)]="reSched.reason"></textarea>
+          </ion-item>
+        </ion-row>
+
+        <ion-row text-center class="sign-in" *ngIf="changeSched">
+          <ion-col>
+            <button ion-button type="submit" class="btn-signin fade-in" (click)="ChangeSched('changeSched')">Submit
+            </button>
+          </ion-col>
+        </ion-row>
+        <ion-row text-center class="sign-in" *ngIf="!changeSched">
+          <ion-col>
+            <button ion-button type="submit" class="btn-signin fade-in" (click)="ChangeSched('reSched')">Submit
+            </button>
+          </ion-col>
+        </ion-row>
+      </div>
+    </ion-list>
+
+
+    <ion-list no-lines *ngIf="!isUserChange">
+      <form #myForm="ngForm" (ngSubmit)="book()" style="margin-top: 1vh;">
+        <!-- <ion-row>
+<ion-col>
+<ion-item class="rounded">
+<ion-label color="p1" *ngIf="bookingData.title; else isNot">
+<ion-icon class="icon" name="ios-paper-outline" item-left></ion-icon>
+{{bookingData.title}}
+</ion-label>
+<ng-template #isNot>
+<ion-label color="dark">
+<ion-icon class="icon" name="ios-list-box-outline" item-left></ion-icon>
+Type of Event
+</ion-label>
+</ng-template>
+<ion-select name="event" [(ngModel)]="bookingData.title" [selectOptions]="selectOptions">
+<div *ngFor="let bItem of items">
+<ion-option value="{{bItem}}">{{bItem}}</ion-option>
+</div>
+</ion-select>
+<ion-input type="text" placeholder="Choose Event" (click)="itemSelected()" name="event" [(ngModel)]="bookingData.event"></ion-input>
+</ion-item>
+</ion-col>
+</ion-row> -->
+        <ion-row>
+          <ion-item class="rounded">
+            <ion-label color="dark">
+              <ion-icon class="icon" name="ios-contact-outline" item-right></ion-icon>
+            </ion-label>
+            <ion-input type="text" name="uName" placeholder="" disabled [(ngModel)]="bookingData.uname"></ion-input>
+            <ion-input *ngIf="fb" type="text" name="uName" placeholder="" disabled [(ngModel)]="bookingData.uname">
+            </ion-input>
+          </ion-item>
+        </ion-row>
+
+        <ion-row no-padding>
+          <ion-item>
+            <ion-label class="label" *ngIf="!bookingData.title">Type of Event
+            </ion-label>
+            <ion-label class="label" color="dark" *ngIf="bookingData.title">{{bookingData.title}}
+            </ion-label>
+            <ion-select name="event" [(ngModel)]="bookingData.title" [selectOptions]="selectOptions" disabled>
+              <div *ngFor="let bItem of items">
+                <ion-option value="{{bItem}}">{{bItem}}</ion-option>
+              </div>
+            </ion-select>
+          </ion-item>
+        </ion-row>
+        <ion-row>
+          <ion-item>
+            <ion-label class="label">Start</ion-label>
+            <ion-datetime *ngIf="!weddingDate" name="startTime" pickerFormat="MMM DD YYYY hh:mm A"
+              displayFormat="MMM DD, YYYY hh:mm" min="{{date}}" max="{{date}}" [(ngModel)]="bookingData.startTime">
+            </ion-datetime>
+            <ion-datetime *ngIf="weddingDate" name="startTime" pickerFormat="MMM DD YYYY hh:mm A"
+              displayFormat="MMM DD, YYYY hh:mm" min="{{weddingDate}}" max="{{weddingDate}}"
+              [(ngModel)]="bookingData.startTime">
+            </ion-datetime>
+          </ion-item>
+        </ion-row>
+        <ion-row *ngIf="fb">
+          <ion-item>
+            <ion-label class="label">End</ion-label>
+            <ion-datetime *ngIf="weddingDate" name="endTime" pickerFormat="MMM DD YYYY hh:mm A"
+              displayFormat="MMM DD, YYYY hh:mm" min="{{weddingDate}}" max="{{weddingDate}}"
+              [(ngModel)]="bookingData.endTime">
+            </ion-datetime>
+            <ion-datetime *ngIf="!weddingDate" name="endTime" pickerFormat="MMM DD YYYY hh:mm A"
+              displayFormat="MMM DD, YYYY hh:mm" min="{{date}}" max="{{weddingDate}}" [(ngModel)]="bookingData.endTime">
+            </ion-datetime>
+          </ion-item>
+        </ion-row>
+
+
+        <ion-row>
+          <ion-item class="rounded">
+            <ion-label color="dark">
+              <ion-icon class="icon" name="ios-tablet-portrait-outline" item-right></ion-icon>
+            </ion-label>
+            <ion-input type="number" name="cnumber" placeholder="Moblie Number" disabled
+              [(ngModel)]="bookingData.cnumber"></ion-input>
+          </ion-item>
+        </ion-row>
+
+        <ion-row>
+          <ion-item id="rounded">
+            <ion-label color="dark">
+              <ion-icon class="icon" name="ios-mail-outline" item-left></ion-icon>
+            </ion-label>
+            <ion-input class="input" name="email" [(ngModel)]="bookingData.email" type="text" disabled
+              placeholder="Email address"></ion-input>
+          </ion-item>
+        </ion-row>
+
+        <ion-row *ngIf="vcActive fade-in">
+          <ion-item class="rounded">
+            <ion-label color="dark">
+              <ion-icon class="icon" name="ios-apps-outline" item-right></ion-icon>
+            </ion-label>
+            <ion-input type="text" name="vc" placeholder="Enter Verification Code" [(ngModel)]="bookingData.vc">
+            </ion-input>
+          </ion-item>
+        </ion-row>
+
+        <!-- <ion-row>
+<ion-item>
+<ion-label class="label">End</ion-label>
+<ion-datetime name="endTime" pickerFormat="DDD, MMM DD, YY h:mm A" displayFormat="DDD, MMM DD, YYYY h:mm A"
+min="{{date}}" [(ngModel)]="bookingData.endTime">
+</ion-datetime>
+</ion-item>
+</ion-row> -->
+        <!-- <ion-row *ngIf="bActive" text-center class="sign-in">
+<ion-col>
+<button ion-button type="submit" class="btn-signin fade-in" color="primary">Book Now</button>
+</ion-col>
+</ion-row> -->
+        <ion-row *ngIf="bActive" text-center class="sign-in">
+          <ion-col>
+            <button ion-button type="submit" class="btn-signin fade-in">Next</button>
+          </ion-col>
+        </ion-row>
+      </form>
+      <ion-row *ngIf="!bActive" text-center class="sign-in">
+        <ion-col>
+          <button ion-button class="btn-signin fade-in" (click)="lastStep()">Send Code</button>
+        </ion-col>
+      </ion-row>
+    </ion-list>
+  </ion-grid>
+</ion-content>

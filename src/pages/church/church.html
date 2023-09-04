@@ -1,0 +1,34 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title class="tbar">{{viewTitle}}</ion-title>
+    <ion-buttons end>
+      <button ion-button [disabled]="isToday" (click)="today()"
+        style="text-transform: capitalize; font-family: 'Akrobat-Regular'; letter-spacing: 1px; font-size: 17px;">Today</button>
+      <!-- <button ion-button icon-only (click)="addEvent()">
+        <ion-icon name="add"></ion-icon>
+      </button> -->
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <!-- <ion-calendar #calendar [events]="currentEvents" (onDaySelect)="onDaySelect($event)" (onMonthSelect)="onMonthSelect($event)"></ion-calendar> -->
+
+  <!-- <h6 text-center class="title">{{viewTitle}}</h6> -->
+  <ion-fab right bottom padding>
+    <!-- <button ion-fab style="background-color: #0c405c;" (click)="presentActionSheet('Default')" *ngIf="ionFab">
+      <ion-icon name="add"></ion-icon>
+    </button>
+    <button ion-fab style="background-color: #0c405c;" (click)="presentActionSheet('ChangeSched')" *ngIf="!ionFab">
+      <ion-icon name="ios-swap"></ion-icon>
+    </button> -->
+
+  </ion-fab>
+  <calendar [eventSource]="eventSource" [calendarMode]="calendar.mode" [currentDate]="calendar.currentDate"
+    [markDisabled]="markDisabled" [lockSwipeToPrev]="lockSwipeToPrev"
+    (onCurrentDateChanged)="onCurrentDateChanged($event)" (onEventSelected)="onEventSelected($event)"
+    (onTitleChanged)="onViewTitleChanged($event)" (onTimeSelected)="onTimeSelected($event)" step="30"
+    class="has-header">
+  </calendar>
+
+</ion-content>

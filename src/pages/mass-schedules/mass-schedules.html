@@ -1,0 +1,90 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-buttons left>
+      <button ion-button icon-only (click)="back()">
+        <ion-icon name="arrow-round-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>About</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content no-padding>
+  <div padding-left padding-right>
+
+    <p class="titles">St. Columban Church - Olongapo </p>
+    <p class="contents">
+      Is one of the popular Religious Center located in 1 First St.
+      New Asinan
+      ,Olongapo
+      City listed under Church/Religious Organization in Olongapo City , Catholic Church in Olongapo City
+    </p>
+  </div>
+  <hr>
+  <!-- <div class="card-background-page" *ngFor="let items of items">
+    <ion-card (click)="anotherPage(items.id, items.title)">
+      <img src="{{items.img}}">
+      <div class="card-title" *ngIf="items.title == 'Other Church Service'" style="
+        background-color: rgb(1, 78, 141);
+      ">{{items.title}}</div>
+      <div class="card-title" *ngIf="items.title == 'Daily Mass Schedules'" style="
+        background-color: rgb(0, 185, 0);
+     ">{{items.title}}</div>
+      <div class="card-title" *ngIf="items.title == 'Marriage Requirements'" style=" background-image: linear-gradient(to right top, #c5ccd8, #b1cde5, #92d0ef, #66d4f1, #12d8eb);
+  ">{{items.title}}</div>
+      <div class="card-title" *ngIf="items.title == 'Baptism Requirements'" style="background-image: linear-gradient(to right top, #0de575, #10e66f, #14e769, #1ae762, #1fe85b, #23e859, #27e856, #2be854, #2ee756, #31e658, #33e45a, #36e35c);
+">{{items.title}}</div>
+    </ion-card>
+  </div> -->
+  <ion-row text-center>
+    <ion-col>
+      <ion-icon name="ios-navigate-outline" color="p1" class="icons"></ion-icon><br>
+      <label>
+        1 First St. New Asinan
+        Olongapo 2200
+      </label>
+    </ion-col>
+  </ion-row>
+  <div class="card-background-page">
+    <ion-slides slidesPerView="auto" pager loop effect="coverflow" autoplay=3000 zoom>
+      <ion-slide *ngFor="let slides of slider">
+        <ion-card>
+          <img class="c-image" src="{{slides.img}}" />
+          <div class="card-content">
+            <!-- <div class="card-title">{{slides.title}}</div>
+            <div class="card-subtitle">Olongapo, Zambales</div> -->
+          </div>
+        </ion-card>
+      </ion-slide>
+    </ion-slides>
+  </div>
+
+  <div text-center>
+    <ion-row>
+      <ion-col>
+        <ion-icon name="logo-facebook" class="icons"></ion-icon><br>
+        <a href="https://www.facebook.com/PariServe/" class="num"> /PariServe</a>
+      </ion-col>
+      <ion-col>
+        <ion-icon name="logo-instagram" class="icons"></ion-icon><br>
+        <label> @example.ig</label>
+      </ion-col>
+      <ion-col>
+        <ion-icon name="logo-twitter" class="icons"></ion-icon><br>
+        <label> @exampleCC</label>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-icon name="ios-call-outline" class="icons"></ion-icon><br>
+        <a href="tel:047 222 2536" class="num">047 222 2536</a><br>
+        <a href="tel:+639 194 890 224" class="num">+639 194 890 224 - Smart</a><br>
+        <a href="tel:+639 565 069 314" class="num">+639 565 069 314 - Globe</a>
+      </ion-col>
+    </ion-row>
+  </div>
+
+</ion-content>

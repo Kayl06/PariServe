@@ -1,0 +1,171 @@
+page-m-app {
+    .my-ion-list {
+        max-height:5px;
+        max-width: 100%;
+    }
+
+    ion-header ion-icon.back-button-icon.icon {
+        color: map-get($colors, light);
+    }
+
+    #rounded {
+        height: 80%;
+        font-family: 'Akrobat-Regular' !important;
+        background-color: transparent;
+        color: rgb(255, 255, 255);
+        text-transform: capitalize;
+        font-size: 15px;
+        padding: 0;
+        margin: 0;
+    }
+
+    .g{
+        font-size: 25px;
+        padding: 0px;
+        padding-left: 5px;
+        margin: 0px;
+        border-radius: 5px;
+        border-bottom: none;
+        text-transform: uppercase;
+    }
+    h3{
+        padding: 0px;
+        margin: 0px;
+        margin-top: 2vh;
+        padding-left: 4px;
+        font-size: 20px;
+    }
+
+    .col{
+        padding: 0px;
+    }
+
+    .label-md{
+        margin-bottom: 3px;
+        margin-top: 3px;
+    }
+
+    b{
+        color: rgb(111, 126, 126);
+        
+    }
+
+    #divider{
+        height: 80%;
+        font-family: 'Akrobat-Regular' !important;
+        text-transform: capitalize;
+        font-size: 25px;
+        padding: 0;
+        margin: 0;
+        margin-top: 5vh !important;
+        border-bottom: none;
+    }
+    .ionic-step-header-icon-number{
+        font-family: 'coolvetica';
+    }
+    ion-step-header{
+        height: 40px !important;
+        padding-right: 9vh !important;
+        margin-right: -12vh;
+    }
+    ion-stepper .ionic-vertical-content {
+        padding: 0px;
+    }
+    #select{
+        font-family: 'Akrobat-Regular' !important;
+        color: rgb(7, 7, 7);
+        text-transform: capitalize;
+        padding-left:5px;
+        margin: 0;
+    }
+    
+    ion-input{
+        color: rgb(0, 0, 0);
+    }
+
+    ion-datetime{
+        font-family: "Akrobat-Regular" !important;
+        font-size: 15px;
+        padding: 0;
+        margin: 0;
+        color: black;
+    }
+
+    input[type="text"]::-webkit-input-placeholder {
+        // color: rgb(0, 0, 0);
+        letter-spacing: 1px;
+    }
+
+    input[type="password"]::-webkit-input-placeholder {
+        color: rgb(0, 0, 0);
+        letter-spacing: 1px;
+    }
+    i {
+        font-size: 12px;
+        font-family: 'Roboto-Regular';
+        color: rgb(180, 183, 185);
+    }
+
+    input[type=number]::-webkit-inner-spin-button, 
+    input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none; 
+    margin: 0; 
+    }
+
+    .sup {
+        margin-top: -2vh !important;
+        font-size: 35px;
+        padding: 0;
+        margin: 0;
+        color: map-get($colors, dark);
+        text-align: right;
+        margin-bottom: -2vh;
+        margin-left: -10px;
+        font-family: 'Akrobat-Regular';
+        font-weight: 500;
+        text-transform: uppercase;
+    }
+
+    .sponsors {
+        margin-top: -1vh !important;
+        font-size: 15px;
+        padding: 0;
+        margin: 0;
+        color: map-get($colors, dark);
+        text-align: right;
+        margin-bottom: -2vh;
+        margin-left: -10px;
+        font-family: 'Akrobat-Regular';
+        font-weight: 500;
+        text-transform: uppercase;
+    }
+
+    .col {
+        padding-top: 0px;
+        padding-bottom: 0px;
+    }
+
+    .spo{
+        font-family: 'Akrobat-Regular';
+        font-size: 20px;
+        text-align: right !important;
+        margin-top: 5vh;
+        padding: 0px;
+        margin-bottom: 0px;
+    }
+
+
+    .btn-signin{
+        border-radius: 3px; 
+        font-family:'Akrobat-Regular'; 
+        font-size: 15px; 
+        letter-spacing: 2px; 
+        text-transform: none; margin-left: 1px;
+        background-color: #1395ba;
+    }
+
+    .sign-in {
+        padding-top: 3vh;
+    }
+
+}

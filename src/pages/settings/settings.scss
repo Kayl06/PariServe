@@ -1,0 +1,207 @@
+page-settings {
+  font-family: 'OpenSans-Regular_1';
+
+  ion-avatar,
+  ion-avatar>img {
+    border-radius: 50%;
+    height: 70px;
+    width: 70px;
+    // position: relative;
+  }
+
+  ion-avatar {
+    // padding-top: 9.2vh; 
+    // padding-top: 2vh; 
+  }
+
+  .img-notif {
+    height: 200px;
+    width: 100%;
+    margin-top: 10vh;
+    margin-bottom: 5vh;
+  }
+
+  .edits {
+    border-radius: 5px;
+    font-family: 'Akrobat-Regular';
+    font-size: 14px;
+    letter-spacing: 1.4px;
+    text-transform: none;
+    padding-left: 1.5vh !important;
+    padding-right: 1.5vh !important;
+    color: rgb(46, 44, 44);
+  }
+
+  .info {
+    padding-top: 15px;
+  }
+
+  .info1 {
+    padding-top: 15px;
+  }
+
+  .button-md {
+    padding: 0;
+  }
+
+  .col-img {
+    right: -2.5%;
+    padding-left: 0% !important;
+    padding-top: 2% !important;
+    margin: 0px;
+  }
+
+  .col-img1 {
+    left: 38%;
+    margin-bottom: 4vh;
+  }
+
+  .person_name {
+    // padding-top: 8.5vh;
+    // margin-top: -7.5vh !important;
+    font-size: 23px;
+    font-weight: bold;
+    font-family: "Akrobat-Regular" !important;
+    margin: 0px;
+    position: relative;
+    // margin-right: auto;
+
+  }
+
+  .content-md {
+    color: #1f323f;
+  }
+
+  .person_contact {
+    font-family: "Roboto-Regular" !important;
+    font-size: 13px;
+    padding: 0px;
+    margin: 0px;
+    color: rgb(112, 111, 111);
+    // margin-right: 33px;
+  }
+
+  .p {
+    text-transform: none !important;
+  }
+
+  .icon {
+    font-size: 23px;
+  }
+
+  .rounded {
+    // height: 10px;
+  }
+
+  .label {
+    font-family: "Roboto-Regular" !important;
+    font-size: 15px;
+    padding: 0;
+    margin: 0;
+  }
+
+  ion-input {
+    font-family: "OpenSans-Regular_1" !important;
+    font-size: 14px;
+    padding: 0;
+    margin: 0;
+  }
+
+  .bg {
+    // background-color:color($pabookCS, secondary);
+    // background:url('../../assets/imgs/');
+    position: relative;
+    padding-bottom: 1vh;
+  }
+
+  .settings-content {
+    // background-color: color($colors, secondary);
+  }
+
+  .p {
+    padding-left: 15px;
+    font-family: 'Akrobat-Regular';
+    letter-spacing: 1px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: left;
+    text-transform: uppercase;
+    margin: 30px 0px 10px 0px;
+  }
+
+  .btn-signin {
+    margin-top: 5vh;
+    border-radius: 8px;
+    font-family: 'Akrobat-Regular';
+    font-size: 15px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background-color: #eb3413;
+    padding: 20px;
+  }
+
+  .wrongPass {
+    color: #e0451e !important;
+    font-family: 'OpenSans-Regular_1';
+    font-size: 12px !important;
+    margin-left: 15px;
+    padding: 0px !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
+  .ites {
+    font-size: 15.5px;
+    background-color: transparent;
+    font-family: 'OpenSans-Regular_1' !important;
+    margin: 0px;
+    padding: 0px;
+  }
+
+  .newHere {
+    font-size: 16px;
+    font-family: 'OpenSans-Regular_1' !important;
+
+    a {
+      color: #14344d;
+      font-weight: 550;
+    }
+  }
+
+  .avatar-background {
+    .avatar {
+      position: relative;
+    }
+
+    .avatar,
+    img {
+      height: 125px;
+      width: 130px;
+      filter: brightness(89%);
+    }
+
+    .avatar-text {
+      position: absolute;
+      top: 35%;
+      margin-left: -5px;
+      width: 100%;
+
+    }
+
+    .avatar-button {
+      background-color: transparent !important;
+      border-radius: 5px;
+      font-size: 100px;
+
+    }
+
+    .avatar-icon {
+      font-size: 80px;
+      padding: 0px;
+      margin-top: -20px;
+
+      position: relative;
+      color: rgb(255, 255, 255);
+    }
+  }
+}

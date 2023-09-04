@@ -1,0 +1,38 @@
+page-notification {
+
+  ion-card {}
+
+  .list {
+    font-family: 'OpenSans-Regular_1';
+    font-size: 10px !important;
+    margin-top: 1vh !important;
+  }
+
+  p {
+    font-family: 'OpenSans-Regular_1';
+    font-size: 14px !important;
+  }
+
+  .img-notif {
+    height: 200px;
+    width: 100%;
+    margin-top: 10vh;
+    margin-bottom: 5vh;
+  }
+  ion-avatar {
+    padding: 0px !important;
+    margin: 1px !important;
+  }
+
+  b {
+    font-size: 14px !important;
+  }
+
+  .ites {
+    font-family: 'OpenSans-Regular_1' !important;
+    font-size: 20px;
+    color: #2b363f;
+    font-weight: 550;
+    width: 100%;
+  }
+}

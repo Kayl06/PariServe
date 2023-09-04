@@ -1,0 +1,160 @@
+page-register {
+  .my-ion-list {
+    max-height: 5px;
+    max-width: 100%;
+  }
+
+  .card-timer {
+    padding-top: 5vh;
+    padding-bottom: 1vh;
+    font-family: 'Akrobat-Regular';
+    letter-spacing: 2px;
+    border-radius: 15px;
+
+  }
+
+  .timer {
+    font-size: 100px;
+  }
+
+  ion-header ion-icon.back-button-icon.icon {
+    color: map-get($colors, light);
+  }
+
+  #rounded {
+    height: 80%;
+    font-family: 'OpenSans-Regular_1' !important;
+    background-color: transparent;
+    border-bottom: 1px solid rgba(65, 65, 65, 0.048);
+    color: rgb(49, 49, 49);
+    text-transform: capitalize;
+    font-size: 14px;
+    padding: 0;
+    margin: 0;
+  }
+
+  .text-input[disabled] {
+    opacity: 15;
+    // color: rgb(0, 0, 0) !important;
+    // color: color($colors,primary);
+    padding: 0px;
+  }
+
+  .num {
+    font-family: 'Akrobat-Regular' !important;
+    background-color: transparent;
+    color: rgb(0, 0, 0) !important;
+    text-transform: capitalize;
+    font-size: 20px;
+    left: 1px;
+    padding: 0;
+    margin: 0;
+    background-color: transparent;
+  }
+
+  ion-input {
+    color: map-get($colors, dark);
+  }
+
+  input[type="text"]::-webkit-input-placeholder {
+    color: rgb(47, 47, 47);
+    letter-spacing: 1px;
+  }
+
+  input[type="password"]::-webkit-input-placeholder {
+    color: rgb(47, 47, 47);
+
+    letter-spacing: 1px;
+  }
+
+  i {
+    font-size: 12px;
+    font-family: 'Roboto-Regular';
+    color: rgb(47, 47, 47);
+
+  }
+
+  input[type=number]::-webkit-inner-spin-button,
+  input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  .already {
+    font-size: 13px;
+    padding: 0;
+    margin: 0;
+    color: rgb(27, 27, 27);
+    text-transform: none
+  }
+
+  .register-card {
+    .card-content-md {
+      padding: 0px 16px;
+    }
+
+    border-radius: 5px;
+  }
+
+  .user-img {
+    height: 50px;
+  }
+
+  .sup {
+    font-size: 23px;
+    padding: 0;
+    margin-bottom: -4vh !important;
+    // color: map-get($colors, light);
+    color: rgb(46, 48, 59);
+    text-align: center;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+    font-family: 'Montserrat-Regular';
+  }
+
+  .res {
+    font-family: 'Roboto-Regular';
+    font-size: 15px;
+    text-transform: none;
+    color: rgb(46, 43, 43);
+  }
+
+  .toolbar {
+    .toolbar-background {
+      background: transparent;
+    }
+  }
+
+  .bg {
+    // background-image: url('https://www.gcccsbsit.xyz/_pabookAdmin/assets/images/1.jpg');
+    // background-image: -webkit-linear-gradient(-90deg, #f6941b 0%, #c33404 200%);
+    background-image: url('../../assets/imgs/bgRegister.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: fixed;
+  }
+
+  .btn-signin {
+    border-radius: 5px;
+    font-family: 'Akrobat-Regular';
+    font-size: 15px;
+    letter-spacing: 2px;
+    text-transform: none;
+    margin-left: 1px;
+    // background-color: map-get($colors, p1);
+    background-image: -webkit-linear-gradient(-180deg, #fe8c00 0%, #f94000 150%) !important;
+    color: white;
+  }
+
+  .sign-in {
+    padding-top: 3vh;
+  }
+
+  #logo {
+    height: 50px;
+    width: 50px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

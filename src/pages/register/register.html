@@ -1,0 +1,122 @@
+<ion-header no-border no-padding>
+
+  <ion-navbar>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content class="bg" no-padding>
+  <ion-grid no-padding class="">
+    <ion-card class="register-card">
+      <ion-card-header class="flipInX">
+        <img src="../../assets/icon/user.svg" class="user-img">
+        <p class="sup" *ngIf="registerform">Create Account</p>
+      </ion-card-header>
+      <ion-card-content class="fadeInLeft">
+        <!-- <ion-list class="my-ion-list fadeInUp"> -->
+
+        <form #myForm="ngForm" (ngSubmit)="registerAccount()" *ngIf="registerform">
+          <ion-item id="rounded">
+            <ion-label color="dark" floating>
+              <ion-icon name="ios-person" item-start></ion-icon>
+              First Name
+            </ion-label>
+            <ion-input class="input" name="fname" [(ngModel)]="userData.fname" type="text"></ion-input>
+          </ion-item>
+
+          <ion-item id="rounded">
+            <ion-label color="dark" floating>
+              <ion-icon name="ios-person" item-start></ion-icon>
+              Last Name
+            </ion-label>
+            <ion-input class="input" name="lname" [(ngModel)]="userData.lname" type="text"></ion-input>
+          </ion-item>
+
+          <ion-item id="rounded">
+            <ion-label color="dark" floating>
+              <p class="res" *ngIf="invalidEmail">
+                <ion-icon name="alert"></ion-icon> Invalid email address
+              </p>
+              <ion-icon name="ios-mail" item-start></ion-icon>
+              Email address
+            </ion-label>
+            <ion-input class="input" name="email" [(ngModel)]="userData.email" type="email"
+              (ionChange)="validateEmail(userData.email)"></ion-input>
+          </ion-item>
+
+          <ion-row>
+            <ion-item class="num" col-3>
+              <ion-input class="input" type="text" value="+63" disabled></ion-input>
+            </ion-item>
+            <ion-item id="rounded" col-9>
+              <ion-label color="dark" floating>
+                <ion-icon name="ios-phone-portrait" item-start></ion-icon>
+                Mobile Number
+              </ion-label>
+              <ion-input class="input" name="mobile" [(ngModel)]="userData.mobile" type="tel" (keypress)="onChange()"
+                maxlength="10" clearInput></ion-input>
+            </ion-item>
+          </ion-row>
+
+
+          <ion-item id="rounded">
+            <ion-label color="dark" floating>
+              <p class="res" *ngIf="res">password must be at least 6 characters</p>
+              <ion-icon name="ios-key" item-start></ion-icon>
+              Password
+            </ion-label>
+            <ion-input class="input" name="password" [(ngModel)]="userData.password" type="password"></ion-input>
+          </ion-item>
+          <ion-item id="rounded">
+            <ion-label color="dark" floating>
+              <p class="res" *ngIf="res">password must be at least 6 characters</p>
+              <ion-icon name="ios-key" item-start></ion-icon>
+              Re-type your Password
+            </ion-label>
+            <ion-input class="input" name="password1" [(ngModel)]="password1" type="password"></ion-input>
+          </ion-item>
+
+          <ion-row text-center class="sign-in">
+            <ion-col>
+              <button ion-button block type="submit" class="btn-signin" *ngIf="create">Create
+                Account
+              </button>
+            </ion-col>
+          </ion-row>
+        </form>
+        <div *ngIf="!registerform">
+          <ion-card class="card-timer fade-in">
+            <ion-card-content>
+              <label style="font-size: 13px; padding: 0px;" text-center>Please check your mobile inbox</label>
+              <h1 text-center class="timer">{{timer}}s</h1>
+            </ion-card-content>
+          </ion-card>
+
+          <ion-item id="rounded">
+            <ion-input placeholder="Enter OTP" class="input" name="vcode" [(ngModel)]="userData.vcode" type="text"
+              text-center style="font-size: 40px;"></ion-input>
+          </ion-item>
+        </div>
+
+        <ion-row text-center>
+          <ion-col>
+            <button ion-button block class="btn-signin" color="p1" (click)="confirmCode()" *ngIf="submit">Confirm
+              Verification Code
+            </button>
+            <button ion-button block class="btn-signin" color="p1" (click)="setCode()" color="{{color}}" *ngIf="!create"
+              [disabled]="!isenabled">
+              {{sendText}}
+            </button>
+          </ion-col>
+        </ion-row>
+
+        <button ion-button block clear color="dark" no-padding>
+          <!-- <ion-icon name="ios-arrow-back-outline" (click)="loginPage()"></ion-icon> -->
+          <p class="already">Already have an
+            account?<a ion-text color="p1" outline (click)="loginPage()"> Login</a></p>
+        </button>
+        <!-- </ion-list> -->
+      </ion-card-content>
+    </ion-card>
+  </ion-grid>
+</ion-content>

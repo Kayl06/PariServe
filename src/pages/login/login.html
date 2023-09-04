@@ -1,0 +1,129 @@
+<!-- <ion-header></ion-header> -->
+<ion-content class="bg">
+  <div class="bg-image"></div>
+  <div text-center text-uppercase>
+    <!-- <img id="logo" src="../../assets/icon/logo1.png" width="150px" style="display:inline-block"
+        height="120px" /> -->
+    <!-- <img id="logo" src="../../assets/icon/app_iconwhite.png" width="130px" style="margin-top: 5vh; display:inline-block"
+      height="135px" /> -->
+  </div>
+  <div id="{{container}}" no-padding>
+    <p id="login"></p>
+    <ion-list class="my-ion-list">
+      <ion-card no-padding *ngIf="cardLogin">
+        <ion-card-header class="flipInX">
+          <img src="../../assets/icon/user (2).svg" class="user-img">
+          <p class="sup1">Login</p>
+        </ion-card-header>
+        <ion-card-content class="fadeInLeft">
+          <form #myForm="ngForm" (ngSubmit)="login()" style="">
+            <ion-item id="rounded">
+              <ion-label color="dark">
+                <ion-icon class="icon" name="ios-mail-outline" item-left></ion-icon>
+              </ion-label>
+              <ion-input class="input" name="email" [(ngModel)]="userData.email" type="text"
+                placeholder="johndoe@gmail.com"></ion-input>
+            </ion-item>
+            <ion-item id="rounded">
+              <ion-label color="dark">
+                <ion-icon class="icon" name="ios-lock-outline" item-left></ion-icon>
+              </ion-label>
+              <ion-input class="input" name="password" [(ngModel)]="userData.password" type="password"
+                placeholder="*********">
+              </ion-input>
+            </ion-item>
+            <ion-item class="forget-pass">
+              <ion-label>
+                <ion-icon class="search" name="ios-search" item-left></ion-icon>
+                <a class="forget-pass" (click)="findAccount()">Find Your Account</a>
+              </ion-label>
+            </ion-item>
+            <ion-row text-center class="sign-in" no-margin>
+              <ion-col>
+                <button ion-button block type="submit" class="btn-signin">Sign
+                  In
+                </button>
+              </ion-col>
+            </ion-row>
+          </form>
+
+          <ion-row class="row-login">
+            <ion-col>
+              <p class="dont-have-account">Don't have an account?<a ion-text class="sign-up" outline
+                  (click)="registerPage()">
+                  <b>Sign Up </b></a> now</p>
+            </ion-col>
+          </ion-row>
+        </ion-card-content>
+      </ion-card>
+
+      <!-- <ion-row class="row-login" no-padding>
+        <ion-col>
+          <ion-row>
+            <button class="btn" ion-button block (click)="loginFb()" icon-start>
+              <ion-icon name="logo-facebook"></ion-icon> Sign in with Facebook
+            </button>
+          </ion-row>
+        </ion-col>
+      </ion-row> -->
+      <ion-card no-padding *ngIf="!cardLogin">
+        <ion-card-header class="flipInX" text-left>
+          <p class="res">{{headerMessage}}</p>
+          <h6>{{headerSubtitle}}</h6>
+        </ion-card-header>
+        <ion-card-content class="fadeInLeft">
+          <form #myForm="ngForm" (ngSubmit)="changePass()" style="">
+            <ion-item id="rounded" *ngIf="!isValidCode">
+              <ion-label color="dark">
+                <ion-icon class="icon" name="ios-keypad" item-left></ion-icon>
+              </ion-label>
+              <ion-input class="input" name="code" [(ngModel)]="verifdata.verifCode" type="text"
+                placeholder="Enter Verification Code"></ion-input>
+            </ion-item>
+            <div *ngIf="isValidCode" class="fadeInLeft">
+              <p *ngIf="passwordLength" class="wrongPass">A password must be six characters</p>
+              <ion-item id="rounded">
+                <ion-label color="dark">
+                  <ion-icon class="icon" name="ios-lock-outline" item-left></ion-icon>
+                </ion-label>
+                <ion-input class="input" name="password" [(ngModel)]="verifdata.new_password" type="{{type}}"
+                  placeholder="New Password">
+                </ion-input>
+              </ion-item>
+              <ion-item id="rounded">
+                <ion-label color="dark">
+                  <ion-icon class="icon" name="ios-lock-outline" item-left></ion-icon>
+                </ion-label>
+                <ion-input class="input" name="password1" [(ngModel)]="verifdata.confirm_password" type="{{type}}"
+                  placeholder="Confirm Password">
+                </ion-input>
+                <ion-icon class="icon" name="{{icon_eye}}" item-end (click)="viewPass()"></ion-icon>
+              </ion-item>
+            </div>
+
+            <ion-row text-center class="sign-in" no-margin>
+              <ion-col>
+                <button ion-button block type="submit" class="btn-signin">{{buttonText}}
+                </button>
+              </ion-col>
+            </ion-row>
+            <ion-row text-center class="sign-in" no-margin>
+              <ion-col>
+                <ion-label class="back">
+                  <ion-icon class="back-icon" name="ios-arrow-back" item-left></ion-icon>
+                  <a class="back" (click)="back()">Back</a>
+                </ion-label>
+              </ion-col>
+            </ion-row>
+          </form>
+        </ion-card-content>
+      </ion-card>
+
+    </ion-list>
+  </div>
+
+</ion-content>
+<!-- 
+<ion-footer>
+  <button ion-button block (click)="loginFb()">Login with Facebook</button>
+</ion-footer> -->
